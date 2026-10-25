@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Amarillo-com-co | Vivienda, arquitectura y hogar</title>
+
+  <meta name="description"
+        content="Explora contenido educativo sobre vivienda, arquitectura, diseño, proyectos inmobiliarios y vida en comunidad.">
+
+  <meta name="robots" content="index, follow">
+
+  <style>
+    :root {
+      --amarillo: #f4c542;
+      --amarillo-claro: #fff5d5;
+      --verde: #183d32;
+      --verde-claro: #eaf1eb;
+      --crema: #fbf9f1;
+      --blanco: #ffffff;
+      --texto: #27352f;
+      --gris: #68736c;
+      --borde: #e6e5dc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--crema);
+      color: var(--texto);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .contenedor {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid var(--borde);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navegacion {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--verde);
+      text-decoration: none;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #b78b00;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #987400;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 90% 15%, #ffe9a1 0, transparent 28%),
+        linear-gradient(135deg, #fff5d5, #f7e8ae);
+      padding: 88px 0;
+    }
+
+    .hero-contenido {
+      max-width: 760px;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      background: var(--blanco);
+      color: var(--verde);
+      border: 1px solid #eadb9e;
+      border-radius: 30px;
+      padding: 7px 14px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      color: var(--verde);
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 1.13rem;
+      margin-bottom: 28px;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 7px;
+      background: var(--verde);
+      color: var(--blanco);
+      text-decoration: none;
+      border: 2px solid var(--verde);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .boton:hover {
+      background: transparent;
+      color: var(--verde);
+    }
+
+    .boton-secundario {
+      background: transparent;
+      color: var(--verde);
+      margin-left: 8px;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .encabezado-seccion {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .encabezado-seccion h2 {
+      color: var(--verde);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      margin-bottom: 13px;
+    }
+
+    .encabezado-seccion p {
+      color: var(--gris);
+    }
+
+    .rejilla {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .tarjeta {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 8px 25px rgba(24, 61, 50, 0.04);
+    }
+
+    .icono {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: var(--amarillo-claro);
+      border-radius: 12px;
+      font-size: 1.55rem;
+      margin-bottom: 18px;
+    }
+
+    .tarjeta h3 {
+      color: var(--verde);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .tarjeta p {
+      color: var(--gris);
+      font-size: 0.96rem;
+    }
+
+    .tarjeta a {
+      display: inline-block;
+      margin-top: 17px;
+      color: var(--verde);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .franja {
+      background: var(--verde);
+      color: var(--blanco);
+    }
+
+    .franja h2 {
+      color: var(--blanco);
+    }
+
+    .franja p {
+      color: #e2e9e4;
+    }
+
+    .franja .tarjeta {
+      background: #234b3e;
+      border-color: #416456;
+    }
+
+    .franja .tarjeta h3 {
+      color: var(--blanco);
+    }
+
+    .franja .tarjeta p {
+      color: #e2e9e4;
+    }
+
+    .franja .icono {
+      background: #f5d66f;
+    }
+
+    .nota-independencia {
+      margin-top: 26px;
+      padding: 17px 20px;
+      border-left: 4px solid var(--amarillo);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 5px;
+      font-size: 0.94rem;
+    }
+
+    .contacto {
+      background: var(--verde-claro);
+    }
+
+    .contacto-contenido {
+      max-width: 720px;
+    }
+
+    .contacto h2 {
+      color: var(--verde);
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .contacto p {
+      margin-bottom: 16px;
+    }
+
+    .aviso {
+      background: var(--blanco);
+      border: 1px solid #d8e1d9;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 20px;
+      font-size: 0.93rem;
+    }
+
+    .legal {
+      background: var(--blanco);
+    }
+
+    .legal-intro {
+      color: var(--gris);
+      margin-bottom: 28px;
+      max-width: 800px;
+    }
+
+    details {
+      border: 1px solid var(--borde);
+      border-radius: 9px;
+      margin-bottom: 12px;
+      background: var(--blanco);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      font-weight: 700;
+      color: var(--verde);
+    }
+
+    .legal-texto {
+      padding: 0 20px 22px;
+      color: #4e5b53;
+      font-size: 0.94rem;
+    }
+
+    .legal-texto h4 {
+      margin-top: 18px;
+      margin-bottom: 5px;
+      color: var(--verde);
+    }
+
+    .legal-texto p,
+    .legal-texto ul {
+      margin-bottom: 12px;
+    }
+
+    .legal-texto ul {
+      padding-left: 22px;
+    }
+
+    footer {
+      background: #102c24;
+      color: var(--blanco);
+      padding: 35px 0;
+    }
+
+    .footer-contenido {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #d4dfd8;
+      font-size: 0.9rem;
+      max-width: 650px;
+    }
+
+    .footer-enlaces {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-enlaces a {
+      color: var(--blanco);
+      font-size: 0.9rem;
+    }
+
+    .actualizacion {
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: #bdcec4;
+    }
+
+    @media (max-width: 800px) {
+      .navegacion {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 17px 0;
+      }
+
+      nav {
+        gap: 12px 16px;
+      }
+
+      .rejilla {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .rejilla {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .boton-secundario {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="contenedor navegacion">
+      <a class="logo" href="#inicio">
+        Amarillo<span>-com-co</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <a href="#temas">Temas</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#nosotros">Sobre el sitio</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#legal">Políticas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-contenido">
+        <span class="etiqueta">Ideas para vivir mejor</span>
+
+        <h1>Un espacio para explorar el mundo de la vivienda.</h1>
+
+        <p>
+          Encuentra información educativa sobre vivienda, arquitectura,
+          diseño de interiores, proyectos inmobiliarios y formas de crear
+          espacios pensados para la vida cotidiana.
+        </p>
+
+        <a class="boton" href="#temas">Explorar contenidos</a>
+        <a class="boton boton-secundario" href="#nosotros">
+          Conocer el sitio
+        </a>
+      </div>
+    </section>
+
+    <section id="temas">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <h2>Temas para descubrir nuevas ideas</h2>
+          <p>
+            Una guía introductoria para comprender mejor los espacios
+            que habitamos y las decisiones que influyen en la vida en casa.
+          </p>
+        </div>
+
+        <div class="rejilla">
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">⌂</div>
+            <h3>Vivienda y hogar</h3>
+            <p>
+              Conoce conceptos básicos sobre tipos de vivienda,
+              distribución de espacios, funcionalidad y comodidad.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">▦</div>
+            <h3>Arquitectura y diseño</h3>
+            <p>
+              Aprende sobre iluminación, materiales, distribución,
+              diseño interior y aprovechamiento del espacio.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">⌖</div>
+            <h3>Entorno y comunidad</h3>
+            <p>
+              Descubre cómo los servicios, las zonas comunes,
+              la movilidad y el entorno influyen en la experiencia residencial.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">▤</div>
+            <h3>Proyectos inmobiliarios</h3>
+            <p>
+              Aprende términos comunes relacionados con proyectos,
+              planos, zonas comunes, etapas de construcción y espacios residenciales.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">✳</div>
+            <h3>Estilo de vida</h3>
+            <p>
+              Ideas para organizar el hogar, aprovechar la luz natural
+              y crear ambientes agradables y funcionales.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">✓</div>
+            <h3>Decisiones informadas</h3>
+            <p>
+              Identifica preguntas útiles para evaluar necesidades,
+              comparar alternativas y buscar información confiable.
+            </p>
+            <a href="#recursos">Explorar tema</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="franja" id="recursos">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <h2>Información útil para la vida cotidiana</h2>
+          <p>
+            Estos recursos son educativos y generales. Su propósito es
+            ayudarte a conocer conceptos y preparar mejores preguntas
+            antes de tomar decisiones relacionadas con tu vivienda.
+          </p>
+        </div>
+
+        <div class="rejilla">
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">01</div>
+            <h3>Cómo analizar un espacio</h3>
+            <p>
+              Considera la iluminación, la ventilación, la circulación,
+              el almacenamiento y las necesidades de quienes habitan el lugar.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">02</div>
+            <h3>Qué observar en un proyecto</h3>
+            <p>
+              Revisa la distribución, las características descritas,
+              los servicios cercanos y los documentos relevantes disponibles.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono" aria-hidden="true">03</div>
+            <h3>Diseño y sostenibilidad</h3>
+            <p>
+              Explora el uso eficiente de recursos, la ventilación natural,
+              la durabilidad de materiales y el aprovechamiento de la luz.
+            </p>
+          </article>
+        </div>
+
+        <div class="nota-independencia">
+          <strong>Importante:</strong>
+          Amarillo-com-co es un sitio educativo independiente. No es un
+          portal oficial de una constructora ni ofrece, por medio de estos
+          contenidos, asesoría inmobiliaria, financiera o jurídica personalizada.
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <h2>Sobre Amarillo-com-co</h2>
+          <p>
+            Este sitio comparte información general sobre vivienda,
+            arquitectura, diseño, espacios residenciales y comunidad.
+            Su objetivo es presentar conceptos de manera clara y accesible
+            para facilitar el aprendizaje y la exploración.
+          </p>
+        </div>
+
+        <div class="rejilla">
+          <article class="tarjeta">
+            <h3>Contenido educativo</h3>
+            <p>
+              Los artículos y recursos están pensados para informar.
+              No sustituyen la revisión de documentos oficiales ni el
+              asesoramiento de profesionales cuando sea necesario.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Independencia editorial</h3>
+            <p>
+              Este proyecto no declara representar, patrocinar ni estar
+              afiliado a Amarilo S. A. S. ni a otras empresas inmobiliarias.
+              Las marcas de terceros pertenecen a sus respectivos titulares.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Transparencia</h3>
+            <p>
+              Buscamos distinguir la información educativa de la publicidad,
+              las ofertas comerciales y las recomendaciones profesionales.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contenedor contacto-contenido">
+        <h2>Contacto</h2>
+        <p>
+          Si tienes comentarios sobre el contenido del sitio, puedes
+          consultar los canales de contacto que se habiliten directamente
+          en esta página.
+        </p>
+
+        <div class="aviso">
+          <strong>Estado del contacto:</strong>
+          este ejemplo todavía no cuenta con un sistema de recepción
+          de mensajes. No se ha configurado un correo electrónico,
+          una dirección física ni un formulario conectado a un servidor.
+          No introduzcas información personal en esta demostración.
+        </div>
+      </div>
+    </section>
+
+    <section class="legal" id="legal">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <h2>Políticas y condiciones</h2>
+          <p>
+            Consulta las condiciones generales de uso y las pautas de
+            privacidad y cookies aplicables al sitio.
+          </p>
+        </div>
+
+        <p class="legal-intro">
+          Los siguientes textos son una plantilla inicial. Deben revisarse
+          y adaptarse a la operación real del sitio antes de publicarlo,
+          especialmente si se habilitan formularios, analítica, publicidad
+          personalizada o cualquier tratamiento de datos personales.
+        </p>
+
+        <details>
+          <summary>Términos y condiciones de uso</summary>
+          <div class="legal-texto">
+            <h4>1. Finalidad del sitio</h4>
+            <p>
+              Amarillo-com-co tiene una finalidad educativa e informativa
+              relacionada con vivienda, arquitectura, diseño, proyectos
+              inmobiliarios y espacios residenciales.
+            </p>
+
+            <h4>2. Aceptación</h4>
+            <p>
+              El acceso y uso del sitio implica que el visitante debe
+              utilizar sus contenidos de forma lícita y respetar estas
+              condiciones. Si no está de acuerdo, debe abstenerse de usarlo.
+            </p>
+
+            <h4>3. Alcance de la información</h4>
+            <p>
+              El contenido se ofrece con fines generales. No constituye
+              una oferta de compraventa, promesa de negocio, asesoría
+              jurídica, financiera, arquitectónica ni una garantía sobre
+              características o resultados de un proyecto.
+            </p>
+
+            <h4>4. Exactitud y actualización</h4>
+            <p>
+              Se procura mantener la información clara y actualizada,
+              pero no se garantiza que todo contenido sea completo,
+              aplicable a cada situación particular o esté libre de errores.
+              El visitante debe verificar los datos relevantes con fuentes
+              oficiales y profesionales competentes.
+            </p>
+
+            <h4>5. Propiedad intelectual</h4>
+            <p>
+              Salvo que se indique otra cosa, los textos, elementos gráficos
+              y diseño originales del sitio están sujetos a las normas
+              aplicables de propiedad intelectual. No se permite reproducir
+              o explotar comercialmente estos materiales sin autorización
+              cuando esta sea necesaria.
+            </p>
+
+            <h4>6. Marcas de terceros</h4>
+            <p>
+              Los nombres y marcas de terceros pertenecen a sus respectivos
+              titulares. Su eventual mención tiene una finalidad descriptiva
+              o informativa y no implica afiliación, patrocinio ni aprobación.
+            </p>
+
+            <h4>7. Enlaces externos</h4>
+            <p>
+              Si en el futuro se incorporan enlaces a sitios externos,
+              estos serán recursos de terceros. El sitio no controla
+              necesariamente sus contenidos, políticas ni disponibilidad.
+            </p>
+
+            <h4>8. Uso permitido</h4>
+            <p>
+              El visitante se compromete a no utilizar el sitio para
+              actividades ilícitas, distribuir contenido malicioso,
+              intentar acceder sin autorización a sistemas o interferir
+              con el funcionamiento de la página.
+            </p>
+
+            <h4>9. Cambios</h4>
+            <p>
+              Estas condiciones podrán actualizarse cuando cambie el
+              funcionamiento del sitio o la normativa aplicable.
+              La versión publicada deberá indicar su fecha de actualización.
+            </p>
+
+            <h4>10. Normativa aplicable</h4>
+            <p>
+              Para usuarios y operaciones sujetos a la legislación colombiana,
+              se tendrá en cuenta la normativa aplicable de Colombia,
+              sin perjuicio de las disposiciones imperativas que correspondan.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Política de privacidad y datos personales</summary>
+          <div class="legal-texto">
+            <h4>1. Estado actual</h4>
+            <p>
+              Esta versión de demostración no incluye formularios conectados
+              a un servidor, ni un mecanismo para almacenar o transmitir
+              los datos introducidos por los visitantes.
+            </p>
+
+            <h4>2. Responsable del tratamiento</h4>
+            <p>
+              Antes de habilitar cualquier tratamiento de datos personales,
+              deberá identificarse de manera clara al responsable real del
+              tratamiento, junto con los datos de contacto y el canal para
+              ejercer los derechos correspondientes. No se debe inventar
+              una identidad, domicilio o información de contacto.
+            </p>
+
+            <h4>3. Normativa de referencia</h4>
+            <p>
+              Cuando corresponda, el tratamiento de datos personales deberá
+              cumplir la Ley 1581 de 2012, sus normas reglamentarias y las
+              demás disposiciones colombianas aplicables.
+            </p>
+
+            <h4>4. Derechos de los titulares</h4>
+            <p>
+              Cuando exista tratamiento de datos personales, los titulares
+              podrán ejercer los derechos reconocidos por la normativa
+              aplicable, incluyendo conocer, actualizar y rectificar sus
+              datos, solicitar prueba de la autorización cuando proceda,
+              conocer el uso dado a sus datos y presentar consultas o
+              reclamos por los canales habilitados.
+            </p>
+
+            <h4>5. Autorización y finalidades</h4>
+            <p>
+              Si se habilitan formularios o servicios que recojan datos,
+              deberán explicarse previamente las finalidades específicas
+              del tratamiento y obtenerse la autorización cuando sea exigible.
+              No deberán recopilarse datos innecesarios para esas finalidades.
+            </p>
+
+            <h4>6. Consultas y reclamos</h4>
+            <p>
+              Antes de comenzar a tratar datos personales, deberá publicarse
+              un canal de contacto real y funcional para atender consultas
+              y reclamos, junto con la información legal necesaria para
+              identificar al responsable.
+            </p>
+
+            <h4>7. Modificaciones</h4>
+            <p>
+              La política deberá actualizarse si el sitio empieza a recopilar
+              información, utiliza servicios externos o cambia sus finalidades
+              de tratamiento.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Política de cookies y tecnologías similares</summary>
+          <div class="legal-texto">
+            <h4>1. Funcionamiento de esta versión</h4>
+            <p>
+              El código de esta demostración no incorpora deliberadamente
+              herramientas publicitarias, píxeles de seguimiento ni servicios
+              de analítica externos.
+            </p>
+
+            <h4>2. Qué son las cookies</h4>
+            <p>
+              Las cookies son pequeños archivos que pueden almacenarse
+              en el dispositivo del visitante para recordar preferencias,
+              mantener sesiones o facilitar determinadas funciones.
+            </p>
+
+            <h4>3. Servicios futuros</h4>
+            <p>
+              Si se incorporan herramientas de analítica, publicidad u otros
+              servicios que utilicen cookies o tecnologías similares, esta
+              política deberá describir su finalidad, los terceros implicados
+              cuando corresponda y los mecanismos de gestión aplicables.
+            </p>
+
+            <h4>4. Control del visitante</h4>
+            <p>
+              El visitante puede revisar las opciones de cookies disponibles
+              en su navegador. Bloquear ciertas cookies puede afectar el
+              funcionamiento de sitios que dependan de ellas.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Publicidad y transparencia</summary>
+          <div class="legal-texto">
+            <h4>Contenido independiente</h4>
+            <p>
+              El sitio busca ofrecer contenido original, útil y transparente.
+              No debe utilizarse para presentar una afiliación empresarial
+              inexistente, ocultar información relevante ni confundir al
+              visitante sobre quién publica o controla el contenido.
+            </p>
+
+            <h4>Publicidad</h4>
+            <p>
+              Si en el futuro se incorpora publicidad, deberá cumplir las
+              políticas vigentes de la plataforma publicitaria utilizada
+              y la legislación aplicable. La publicación de estas condiciones
+              no garantiza la aprobación de una cuenta o anuncio.
+            </p>
+
+            <h4>Identidad y contacto</h4>
+            <p>
+              Si la actividad real del sitio requiere publicar información
+              de identificación, responsable del tratamiento o contacto,
+              dicha información deberá ser auténtica y estar disponible
+              para los visitantes. No se deben publicar datos ficticios.
+            </p>
+          </div>
+        </details>
+
+        <p class="actualizacion">
+          Última actualización: 24 de octubre de 2026.
+          Revisa y modifica esta fecha cuando actualices el contenido.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor footer-contenido">
+      <div>
+        <a class="logo" href="#inicio" style="color: white;">
+          Amarillo<span>-com-co</span>
+        </a>
+
+        <p style="margin-top: 12px;">
+          Contenido educativo sobre vivienda, arquitectura, diseño
+          y espacios para la vida cotidiana.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Sitio independiente, sin afiliación declarada con Amarilo S. A. S.
+          ni con otras marcas inmobiliarias.
+        </p>
+      </div>
+
+      <div class="footer-enlaces">
+        <a href="#temas">Temas</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#legal">Políticas</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
