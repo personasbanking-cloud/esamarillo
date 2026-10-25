@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototipo visual | Módulo de Recaudos</title>
+<style>
+:root{--yellow:#ffdf00;--ink:#172b43;--muted:#929292;--line:#d5d5d5;--paper:#fff;--bg:#f1f1f1}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#242b35;background:var(--bg)}
+.demo-banner{background:#fff4c2;color:#4b4100;text-align:center;padding:9px 14px;font-size:12px;font-weight:700;letter-spacing:.04em;border-bottom:1px solid #eadb82}
+.topbar{background:#fff;min-height:91px;display:flex;align-items:center;padding:12px clamp(18px,6vw,100px);gap:28px;border-bottom:1px solid #e5e5e5}
+.brand{width:105px;flex:none;text-align:center;color:#111;font-weight:700;font-size:17px;letter-spacing:-.6px}
+.brand-mark{height:48px;width:54px;border:7px solid var(--yellow);margin:0 auto 4px;position:relative}
+.brand-mark:after{content:"";position:absolute;right:-7px;bottom:-7px;width:10px;height:10px;background:#fff}
+.brand-divider{height:55px;width:1px;background:#4d4d4d}
+.topbar h1{font-size:clamp(23px,2.2vw,34px);margin:0;font-weight:700;color:#202a39;flex:1}
+.home-btn{border:1px solid #394150;border-radius:6px;padding:12px 22px;background:white;color:#1d2c40;font-size:14px;white-space:nowrap}
+main{min-height:calc(100vh - 130px);padding:34px 20px 46px;background:radial-gradient(#fff 0,#f6f6f6 55%,#ededed 100%)}
+.intro{text-align:center;max-width:1250px;margin:0 auto 43px}
+.intro h2{font-size:clamp(21px,2vw,31px);line-height:1.25;font-weight:500;margin:0 0 10px;color:#29313c}
+.intro p{font-size:clamp(17px,1.55vw,24px);font-weight:700;margin:0;color:#242b35}
+.payment-card{max-width:720px;min-height:465px;margin:0 auto;display:grid;grid-template-columns:46% 54%;background:#fff;border:1px solid #d8d8d8;border-radius:8px;overflow:hidden;box-shadow:0 2px 5px #0002}
+.photo-side{position:relative;min-height:465px;overflow:hidden;background:#e5e7e7}
+.photo-side img{height:100%;width:100%;object-fit:cover;position:absolute;inset:0}
+.photo-fallback{height:100%;min-height:465px;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#d8e3e4,#fff 55%,#d4d4d4);padding:24px;text-align:center;color:#5c6670}
+.yellow-frame{position:absolute;border:22px solid var(--yellow);width:78%;height:62%;top:8%;left:8%;pointer-events:none}
+.form-side{padding:30px 30px 25px;display:flex;flex-direction:column}
+.form-side h3{font-size:24px;line-height:1.22;margin:0 0 12px;color:#29313b}
+.form-side .help{font-size:18px;line-height:1.35;color:#969696;font-weight:600;margin:0 0 10px}
+.input-wrap{display:flex;width:100%;margin:0 0 18px;min-height:43px}
+.user-icon{background:#222;color:white;width:57px;display:flex;align-items:center;justify-content:center;border-radius:5px 0 0 5px;font-size:19px}
+input{min-width:0;flex:1;border:1px solid #c9c9c9;border-radius:0 5px 5px 0;padding:10px;font-size:15px;background:#fafafa;color:#888}
+.login-btn{border:1px solid #303949;background:#fff;border-radius:5px;min-height:43px;font-size:15px;color:#29313b}
+.rule{border:0;border-top:1px solid #777;margin:16px 0 0}
+.security{display:flex;justify-content:center;align-items:center;gap:28px;margin:28px auto 0;flex-wrap:wrap}
+.ecollect{font-size:27px;font-weight:700;letter-spacing:-1px;color:#1c2636}
+.ecollect b{color:#54ad57}.secure-sub{font-size:12px;color:#68ae72;margin-top:1px}
+.ssl{background:#7850c6;color:white;border-radius:25px;padding:13px 19px;font-weight:700;font-size:13px}
+.cert{border:3px dotted #333;border-radius:50%;width:75px;height:75px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:700;line-height:1.1}
+.notice{max-width:720px;margin:22px auto 0;text-align:center;color:#6c6c6c;font-size:12px;line-height:1.5}
+.watermark{position:fixed;z-index:5;pointer-events:none;top:48%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:clamp(20px,4vw,50px);font-weight:900;letter-spacing:.06em;color:#666;opacity:.14;white-space:nowrap}
+button,input{cursor:not-allowed}
+@media(max-width:700px){
+ .topbar{min-height:76px;padding:10px 16px;gap:14px}
+ .brand{width:88px;font-size:14px}.brand-mark{width:46px;height:42px;border-width:6px}
+ .brand-divider{height:45px}.topbar h1{display:none}.home-btn{margin-left:auto;padding:10px 12px;font-size:12px}
+ main{padding:28px 0 34px}.intro{padding:0 18px;margin-bottom:28px}
+ .intro h2{font-size:clamp(23px,5.8vw,34px);line-height:1.18;margin-bottom:15px}
+ .intro p{font-size:clamp(17px,4.3vw,23px);line-height:1.35}
+ .payment-card{display:flex;flex-direction:column;min-height:0;border-radius:8px;margin:0 0 0;max-width:none}
+ .photo-side{display:none}
+ .form-side{padding:34px 24px 28px}
+ .form-side h3{font-size:clamp(23px,5.7vw,31px);font-weight:500;line-height:1.25}
+ .form-side .help{font-size:18px;font-weight:400;margin-bottom:20px}
+ .input-wrap{min-height:56px;margin-bottom:22px}.user-icon{width:58px;font-size:22px}
+ input{font-size:17px;padding:12px}
+ .login-btn{min-height:58px;font-size:17px}
+ .rule{margin-top:27px}
+ .security{gap:16px;margin:52px 14px 0}
+ .ecollect{font-size:25px}.ssl{padding:12px;font-size:12px}.cert{width:70px;height:70px}
+ .notice{margin:18px 22px 0}
+ .watermark{font-size:clamp(17px,5vw,28px);white-space:normal;width:100%;text-align:center}
+}
+@media(min-width:701px) and (max-width:950px){.payment-card{max-width:680px}.form-side{padding:25px 22px}.form-side h3{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="demo-banner">PROTOTIPO VISUAL · NO OFICIAL · NO FUNCIONAL · NO INGRESES DATOS REALES</div>
+<header class="topbar">
+  <div class="brand" aria-label="Marca de referencia Amarilo">
+    <div class="brand-mark"></div>AMARILO
+  </div>
+  <div class="brand-divider"></div>
+  <h1>Módulo de Recaudos</h1>
+  <button class="home-btn" type="button" disabled>REGRESAR AL INICIO</button>
+</header>
+<main>
+  <section class="intro">
+    <h2>Bienvenido al sistema de pagos electrónicos de AMARILO - Separaciones ventas nuevas</h2>
+    <p>AQUÍ PODRÁS REALIZAR TUS PAGOS DE MANERA SEGURA</p>
+  </section>
+  <section class="payment-card" aria-label="Vista de demostración no funcional">
+    <div class="photo-side">
+      <div class="photo-fallback">
+        <div class="yellow-frame"></div>
+        <div>Espacio reservado para la fotografía de referencia<br><small>Imagen ilustrativa para presentación</small></div>
+      </div>
+    </div>
+    <div class="form-side">
+      <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
+      <p class="help">Digite la información solicitada para ingresar al sistema.</p>
+      <div class="input-wrap">
+        <span class="user-icon" aria-hidden="true">♟</span>
+        <input type="text" placeholder="* Número de identificación" disabled aria-label="Campo de ejemplo desactivado">
+      </div>
+      <button class="login-btn" type="button" disabled>INICIAR SESIÓN</button>
+      <hr class="rule">
+    </div>
+  </section>
+  <section class="security" aria-label="Elementos visuales de seguridad ilustrativos">
+    <div>
+      <div class="ecollect"><b>G</b> ecollect</div>
+      <div class="secure-sub">Seguro para ti ◈</div>
+    </div>
+    <div class="ssl">✳ SSL <small> · DEMO</small></div>
+    <div class="cert">ICONO<br>DEMO<br>SEGURIDAD</div>
+  </section>
+  <p class="notice">Concepto de diseño para revisión empresarial. Esta maqueta es estática: no autentica usuarios, no procesa transacciones y no guarda ni envía información.</p>
+</main>
+<div class="watermark" aria-hidden="true">PROTOTIPO VISUAL · NO FUNCIONAL</div>
+</body>
+</html>
