@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amarillo-com-co | Housing, Architecture & Home</title>
+  <meta name="description" content="Explore educational content about housing, architecture, interior design, real estate projects, and community living.">
+  <meta name="robots" content="index, follow">
+  <link rel="alternate" hreflang="es" href="./index.html">
+  <link rel="alternate" hreflang="en-US" href="./usa.html">
+
+  <style>
+    :root {
+      --yellow: #f4c542;
+      --yellow-light: #fff5d5;
+      --green: #183d32;
+      --green-light: #eaf1eb;
+      --cream: #fbf9f1;
+      --white: #ffffff;
+      --text: #27352f;
+      --gray: #68736c;
+      --border: #e6e5dc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--green);
+      text-decoration: none;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #b78b00;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #987400;
+    }
+
+    .language-link {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 10px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 90% 15%, #ffe9a1 0, transparent 28%),
+        linear-gradient(135deg, #fff5d5, #f7e8ae);
+      padding: 88px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--white);
+      color: var(--green);
+      border: 1px solid #eadb9e;
+      border-radius: 30px;
+      padding: 7px 14px;
+      margin-bottom: 20px;
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 1.13rem;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 7px;
+      background: var(--green);
+      color: var(--white);
+      text-decoration: none;
+      border: 2px solid var(--green);
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--green);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--green);
+      margin-left: 8px;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      color: var(--green);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      margin-bottom: 13px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 8px 25px rgba(24, 61, 50, .04);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: var(--yellow-light);
+      border-radius: 12px;
+      font-size: 1.55rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--gray);
+      font-size: .96rem;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 17px;
+      color: var(--green);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .band {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .band h2 {
+      color: var(--white);
+    }
+
+    .band p {
+      color: #e2e9e4;
+    }
+
+    .band .card {
+      background: #234b3e;
+      border-color: #416456;
+    }
+
+    .band .card h3 {
+      color: var(--white);
+    }
+
+    .band .card p {
+      color: #e2e9e4;
+    }
+
+    .band .icon {
+      background: #f5d66f;
+    }
+
+    .independence-note {
+      margin-top: 26px;
+      padding: 17px 20px;
+      border-left: 4px solid var(--yellow);
+      background: rgba(255,255,255,.08);
+      border-radius: 5px;
+      font-size: .94rem;
+    }
+
+    .contact {
+      background: var(--green-light);
+    }
+
+    .contact-content {
+      max-width: 720px;
+    }
+
+    .contact h2 {
+      color: var(--green);
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+    }
+
+    .contact p {
+      margin-bottom: 16px;
+    }
+
+    .notice {
+      background: var(--white);
+      border: 1px solid #d8e1d9;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 20px;
+      font-size: .93rem;
+    }
+
+    .legal {
+      background: var(--white);
+    }
+
+    .legal-intro {
+      color: var(--gray);
+      margin-bottom: 28px;
+      max-width: 800px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      margin-bottom: 12px;
+      background: var(--white);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .legal-text {
+      padding: 0 20px 22px;
+      color: #4e5b53;
+      font-size: .94rem;
+    }
+
+    .legal-text h4 {
+      margin-top: 18px;
+      margin-bottom: 5px;
+      color: var(--green);
+    }
+
+    .legal-text p,
+    .legal-text ul {
+      margin-bottom: 12px;
+    }
+
+    .legal-text ul {
+      padding-left: 22px;
+    }
+
+    footer {
+      background: #102c24;
+      color: var(--white);
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #d4dfd8;
+      font-size: .9rem;
+      max-width: 650px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      font-size: .9rem;
+    }
+
+    .updated {
+      margin-top: 20px;
+      font-size: .82rem;
+      color: #bdcec4;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 17px 0;
+      }
+
+      nav {
+        gap: 12px 16px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .button-secondary {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">Amarillo<span>-com-co</span></a>
+
+      <nav aria-label="Main navigation">
+        <a href="#topics">Topics</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#policies">Policies</a>
+        <a class="language-link" href="./index.html" lang="es">Español</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="tag">Ideas for better living</span>
+
+        <h1>A place to explore the world of housing.</h1>
+
+        <p>
+          Discover educational information about housing, architecture,
+          interior design, real estate projects, and ways to create spaces
+          designed for everyday life.
+        </p>
+
+        <a class="button" href="#topics">Explore topics</a>
+        <a class="button button-secondary" href="#about">About this site</a>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Topics to inspire new ideas</h2>
+          <p>
+            An introductory guide to understanding the spaces we live in
+            and the choices that shape everyday life at home.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌂</div>
+            <h3>Housing and home</h3>
+            <p>
+              Learn basic concepts about housing types, room layouts,
+              functionality, and comfort.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">▦</div>
+            <h3>Architecture and design</h3>
+            <p>
+              Learn about lighting, materials, interior design, space
+              planning, and making the most of a room.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌖</div>
+            <h3>Neighborhoods and community</h3>
+            <p>
+              Discover how local services, shared spaces, transportation,
+              and surroundings shape residential life.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">▤</div>
+            <h3>Real estate projects</h3>
+            <p>
+              Understand common terms related to residential developments,
+              floor plans, shared amenities, and construction stages.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">✳</div>
+            <h3>Lifestyle</h3>
+            <p>
+              Find ideas for organizing your home, making use of natural
+              light, and creating comfortable, functional spaces.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">✓</div>
+            <h3>Informed decisions</h3>
+            <p>
+              Identify useful questions to evaluate your needs, compare
+              options, and find reliable information.
+            </p>
+            <a href="#resources">Explore this topic</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="resources">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Useful information for everyday life</h2>
+          <p>
+            These resources are general and educational. They are intended
+            to help you understand key concepts and prepare better questions
+            before making housing-related decisions.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">01</div>
+            <h3>How to evaluate a living space</h3>
+            <p>
+              Start with the way people move through the home. Check whether
+              doors and walkways stay clear, frequently used items have
+              practical storage, and rooms can serve their intended purposes.
+            </p>
+            <p style="margin-top:12px">
+              <strong>Try this:</strong> list three daily activities for each
+              room, then check whether the current layout supports them comfortably.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">02</div>
+            <h3>A checklist for reviewing a property project</h3>
+            <p>
+              Separate what is documented from what is assumed. Review
+              available floor plans, dimensions, included features, shared-area
+              rules, estimated recurring costs, timelines, and any relevant
+              permits or disclosures.
+            </p>
+            <p style="margin-top:12px">
+              <strong>Try this:</strong> write down unanswered questions and
+              request written clarification from the appropriate provider
+              before making a commitment.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">03</div>
+            <h3>Design choices and resource use</h3>
+            <p>
+              Daylight, cross-ventilation where available, durable finishes,
+              efficient fixtures, and flexible furniture can affect comfort
+              and resource use. The right choice depends on climate, building
+              conditions, budget, and maintenance needs.
+            </p>
+            <p style="margin-top:12px">
+              <strong>Try this:</strong> compare options by upfront cost,
+              expected maintenance, durability, and suitability for the space.
+            </p>
+          </article>
+        </div>
+
+        <div style="margin-top:28px; background:#fff; color:var(--text); border-radius:12px; padding:26px; border:1px solid var(--border);">
+          <h3 style="color:var(--green); margin-bottom:10px;">
+            A simple framework for comparing housing options
+          </h3>
+
+          <p style="color:var(--gray); margin-bottom:12px;">
+            Before comparing options, write down your priorities and separate
+            essential needs from preferences. The following categories can
+            help organize your research:
+          </p>
+
+          <ul style="padding-left:22px; color:var(--gray);">
+            <li>
+              <strong>Space:</strong> room dimensions, storage, accessibility,
+              daylight, and ventilation.
+            </li>
+            <li>
+              <strong>Location:</strong> commute, public transportation,
+              nearby services, noise, and neighborhood facilities.
+            </li>
+            <li>
+              <strong>Costs:</strong> purchase or rental price, utilities,
+              maintenance, shared-area fees, insurance, and other recurring
+              expenses that apply.
+            </li>
+            <li>
+              <strong>Documentation:</strong> written descriptions, plans,
+              agreements, applicable disclosures, and any questions requiring
+              professional review.
+            </li>
+            <li>
+              <strong>Long-term fit:</strong> whether the space can accommodate
+              foreseeable changes in household needs.
+            </li>
+          </ul>
+
+          <p style="color:var(--gray); margin-top:12px;">
+            This framework is educational, not financial or legal advice.
+            Costs, documents, and requirements vary by location and property.
+          </p>
+        </div>
+
+        <div class="independence-note">
+          <strong>Please note:</strong> Amarillo-com-co is an independent
+          educational website. It is not an official homebuilder or real estate
+          company website. Its content does not constitute personalized real
+          estate, financial, or legal advice.
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Amarillo-com-co</h2>
+          <p>
+            This website shares general information about housing, architecture,
+            design, residential spaces, and community. Its goal is to present
+            concepts clearly and accessibly for learning and exploration.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Educational content</h3>
+            <p>
+              Articles and resources are intended to inform. They do not replace
+              official document reviews or professional advice when needed.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Editorial independence</h3>
+            <p>
+              This project does not claim to represent, sponsor, or be affiliated
+              with Amarilo S.A.S. or any other real estate company. Third-party
+              trademarks belong to their respective owners.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Transparency</h3>
+            <p>
+              We aim to distinguish educational information from advertising,
+              commercial offers, and professional recommendations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Frequently asked questions</h2>
+          <p>
+            Short explanations of common housing and design terms.
+            Details can vary by location and project.
+          </p>
+        </div>
+
+        <details>
+          <summary>
+            What is the difference between a floor plan and a property listing?
+          </summary>
+          <div class="legal-text">
+            <p>
+              A floor plan is a drawing that shows the arrangement of spaces
+              and may include dimensions. A property listing is a description
+              of a property or offering. A listing may not show every detail,
+              so compare it with available plans and written documentation.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why should I review recurring housing costs?</summary>
+          <div class="legal-text">
+            <p>
+              The headline price is only one part of the overall cost of living
+              in or maintaining a property. Depending on the property and
+              location, recurring costs may include utilities, maintenance,
+              insurance, taxes, or shared-area fees. Confirm which costs apply
+              before making a decision.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            Can this website recommend or verify a specific property?
+          </summary>
+          <div class="legal-text">
+            <p>
+              This website provides general educational information. It does not
+              verify listings, inspect properties, provide personalized
+              investment recommendations, or replace advice from qualified
+              professionals. Verify claims and documents directly with the
+              relevant sources.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-content">
+        <h2>Contact</h2>
+
+        <p>
+          This website is an informational project. Before a public launch or
+          any advertising campaign, add a real, monitored contact method
+          appropriate to the site's operator and the services actually offered.
+          Do not publish invented contact details or imply that a contact
+          service is active when it is not.
+        </p>
+
+        <div class="notice">
+          <strong>Contact status:</strong> this example does not yet have a
+          message-receiving system. No email address, physical address, or
+          server-connected form has been configured. Do not submit personal
+          information through this demonstration.
+        </div>
+      </div>
+    </section>
+
+    <section class="legal" id="policies">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Policies and terms</h2>
+          <p>
+            Review the general terms of use and the privacy and cookie
+            information for this website.
+          </p>
+        </div>
+
+        <p class="legal-intro">
+          The following text is a starting template, not a certification of
+          legal or advertising compliance. Review and adapt it to the actual
+          website operator, location, services, contact process, analytics,
+          advertising, and any personal-data processing before publication.
+        </p>
+
+        <details>
+          <summary>Terms and Conditions</summary>
+          <div class="legal-text">
+            <h4>1. Purpose of the website</h4>
+            <p>
+              Amarillo-com-co provides educational and informational content
+              about housing, architecture, design, real estate projects, and
+              residential spaces.
+            </p>
+
+            <h4>2. Acceptance</h4>
+            <p>
+              By accessing and using the website, visitors agree to use its
+              content lawfully and follow these terms. Visitors who do not
+              agree should stop using the website.
+            </p>
+
+            <h4>3. Scope of information</h4>
+            <p>
+              Content is provided for general informational purposes only.
+              It is not an offer to buy or sell property, a promise of a
+              business transaction, personalized legal, financial, or
+              architectural advice, or a guarantee about any project.
+            </p>
+
+            <h4>4. Accuracy and updates</h4>
+            <p>
+              We aim to keep information clear and up to date, but cannot
+              guarantee that all content is complete, suitable for every
+              situation, or free from errors. Visitors should verify important
+              information with official sources and qualified professionals.
+            </p>
+
+            <h4>5. Intellectual property</h4>
+            <p>
+              Unless stated otherwise, original website text, graphics, and
+              design are subject to applicable intellectual property laws.
+              Reproduction or commercial use without permission is not allowed
+              where permission is required.
+            </p>
+
+            <h4>6. Third-party trademarks</h4>
+            <p>
+              Third-party names and trademarks belong to their respective
+              owners. Any mention is for descriptive or informational purposes
+              and does not imply affiliation, sponsorship, or endorsement.
+            </p>
+
+            <h4>7. External links</h4>
+            <p>
+              If external links are added in the future, they will lead to
+              third-party resources. This website does not necessarily control
+              their content, policies, or availability.
+            </p>
+
+            <h4>8. Acceptable use</h4>
+            <p>
+              Visitors must not use the website for unlawful activities,
+              distribute malicious content, attempt unauthorized access to
+              systems, or interfere with the website's operation.
+            </p>
+
+            <h4>9. Changes</h4>
+            <p>
+              These terms may be updated as the website or applicable law
+              changes. The published version should state its update date.
+            </p>
+
+            <h4>10. Applicable law</h4>
+            <p>
+              Colombian law may apply to activities and processing subject
+              to Colombian jurisdiction, without limiting any mandatory laws
+              that apply to visitors or operations elsewhere.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Privacy and Personal Data Policy</summary>
+          <div class="legal-text">
+            <h4>1. Current status</h4>
+            <p>
+              This demonstration does not include server-connected forms or a
+              mechanism to store or transmit information entered by visitors.
+            </p>
+
+            <h4>2. Data controller</h4>
+            <p>
+              Before any personal data is processed, the actual data controller
+              must be clearly identified, with genuine contact details and a
+              channel for privacy requests. Do not invent an identity, address,
+              or contact information.
+            </p>
+
+            <h4>3. Legal framework</h4>
+            <p>
+              Where applicable, personal data processing must comply with
+              Colombia's Law 1581 of 2012, its implementing regulations, and
+              other applicable Colombian requirements. Other laws may apply
+              depending on the website's operations and visitors.
+            </p>
+
+            <h4>4. Individual rights</h4>
+            <p>
+              Where personal data is processed, individuals may exercise rights
+              available under applicable law, including requesting access to,
+              updates to, or correction of their data and submitting inquiries
+              or complaints through the designated channel.
+            </p>
+
+            <h4>5. Consent and purposes</h4>
+            <p>
+              If forms or services collect data, the specific purposes must be
+              explained in advance and consent obtained when required. Data
+              should not be collected beyond what is reasonably necessary for
+              those purposes.
+            </p>
+
+            <h4>6. Requests and complaints</h4>
+            <p>
+              Before personal data processing begins, a real and functional
+              channel for privacy inquiries and complaints must be published,
+              along with legally required controller information.
+            </p>
+
+            <h4>7. Updates</h4>
+            <p>
+              This policy must be updated if the website starts collecting
+              information, uses third-party services, or changes its
+              processing purposes.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Cookies and Similar Technologies</summary>
+          <div class="legal-text">
+            <h4>1. Current version</h4>
+            <p>
+              This demonstration does not intentionally include advertising
+              trackers, pixels, or external analytics services.
+            </p>
+
+            <h4>2. What cookies are</h4>
+            <p>
+              Cookies are small files that may be stored on a visitor's device
+              to remember preferences, maintain sessions, or support certain
+              website functions.
+            </p>
+
+            <h4>3. Future services</h4>
+            <p>
+              If analytics, advertising, or other services using cookies or
+              similar technologies are added, this policy should describe
+              their purposes, relevant third parties, and available controls.
+            </p>
+
+            <h4>4. Visitor controls</h4>
+            <p>
+              Visitors can review cookie settings in their browser. Blocking
+              some cookies may affect websites that rely on them.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Advertising and Transparency</summary>
+          <div class="legal-text">
+            <h4>Independent content</h4>
+            <p>
+              The website aims to provide original, useful, and transparent
+              content. It must not claim a business affiliation that does not
+              exist, conceal material information, or confuse visitors about
+              who publishes or controls the content.
+            </p>
+
+            <h4>Advertising</h4>
+            <p>
+              If advertising is added, it must comply with the current policies
+              of the selected advertising platform and applicable law.
+              Publishing these terms does not guarantee advertising or
+              account approval.
+            </p>
+
+            <h4>Identity and contact</h4>
+            <p>
+              If the website's actual activities require identity, data-controller,
+              or contact information to be published, that information must be
+              genuine and available to visitors. Do not publish fictional details.
+            </p>
+          </div>
+        </details>
+
+        <p class="updated">
+          Last updated: October 24, 2026. Please revise this date whenever
+          the content is updated.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <a class="logo" href="#home" style="color: white;">
+          Amarillo<span>-com-co</span>
+        </a>
+
+        <p style="margin-top: 12px;">
+          Educational content about housing, architecture, design, and
+          everyday living spaces.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Independent website with no claimed affiliation with Amarilo S.A.S.
+          or other real estate brands.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#topics">Topics</a>
+        <a href="#contact">Contact</a>
+        <a href="#policies">Policies</a>
+        <a href="./index.html" lang="es">Español</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
