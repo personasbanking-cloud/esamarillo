@@ -12,13 +12,9 @@
     --fondo: #f2f2f2;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-    min-height: 100%;
-}
+html { min-height: 100%; }
 
 body {
     margin: 0;
@@ -76,6 +72,7 @@ body {
     font-family: inherit;
     font-size: 11px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 /* Contenido principal */
@@ -85,7 +82,6 @@ main {
     background: radial-gradient(ellipse at center, #fff 0%, #f2f2f2 100%);
 }
 
-/* Mensajes de bienvenida */
 .intro {
     max-width: 1150px;
     margin: 0 auto 43px;
@@ -124,7 +120,6 @@ main {
     box-shadow: 0 2px 5px #0002;
 }
 
-/* Imagen para escritorio */
 .photo-side {
     position: relative;
     align-self: stretch;
@@ -145,7 +140,6 @@ main {
     object-position: center center;
 }
 
-/* Área del formulario */
 .form-side {
     min-width: 0;
     display: flex;
@@ -171,7 +165,6 @@ main {
     line-height: 1.4;
 }
 
-/* Campo de identificación */
 .input-wrap {
     display: flex;
     width: 100%;
@@ -211,7 +204,6 @@ main {
     opacity: 1;
 }
 
-/* Botón */
 .login-btn {
     width: 100%;
     max-width: 300px;
@@ -224,6 +216,7 @@ main {
     font-family: inherit;
     font-size: 13px;
     font-weight: 400;
+    cursor: pointer;
 }
 
 .rule {
@@ -251,9 +244,7 @@ main {
     letter-spacing: -1px;
 }
 
-.ecollect b {
-    color: #54ad57;
-}
+.ecollect b { color: #54ad57; }
 
 .secure-sub {
     margin-top: 2px;
@@ -293,51 +284,140 @@ main {
     line-height: 1.5;
 }
 
-/* Controles desactivados */
-button,
-input {
-    cursor: not-allowed;
+/* ============================
+   MODAL TOKEN
+   ============================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .45);
+    z-index: 100;
 }
 
-/* Tabletas */
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    padding: 26px 24px 22px;
+    text-align: center;
+    animation: modalIn .2s ease-out;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(12px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #29313b;
+    font-weight: 700;
+}
+
+.modal p {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.45;
+}
+
+.modal p strong {
+    color: #29313b;
+}
+
+/* 6 campos del token */
+.token-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.token-inputs input {
+    width: 42px;
+    height: 50px;
+    padding: 0;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    background: #fafafa;
+    font-size: 22px;
+    font-weight: 700;
+    color: #29313b;
+    text-align: center;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.token-inputs input:focus {
+    border-color: #394150;
+    box-shadow: 0 0 0 3px rgba(57, 65, 80, .12);
+    background: #fff;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-actions button {
+    flex: 1;
+    min-height: 40px;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid #394150;
+}
+
+.btn-cancel {
+    background: #fff;
+    color: #29313b;
+}
+
+.btn-ok {
+    background: #29313b;
+    color: #fff;
+    border-color: #29313b;
+}
+
+.btn-ok:hover { background: #1c2636; }
+.btn-cancel:hover { background: #f2f2f2; }
+
+.modal-error {
+    min-height: 16px;
+    margin: 0 0 12px;
+    color: #c0392b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
 @media (min-width: 701px) and (max-width: 950px) {
-    .topbar {
-        gap: 16px;
-        padding-right: 22px;
-        padding-left: 22px;
-    }
-
-    .topbar h1 {
-        font-size: 21px;
-    }
-
-    .payment-card {
-        max-width: 640px;
-        min-height: 370px;
-    }
-
-    .photo-side {
-        min-height: 370px;
-    }
-
-    .form-side {
-        padding: 24px 18px;
-    }
-
-    .form-side h3 {
-        font-size: 16px;
-    }
-
-    .input-wrap,
-    .login-btn,
-    .rule {
-        max-width: 100%;
-    }
+    .topbar { gap: 16px; padding-right: 22px; padding-left: 22px; }
+    .topbar h1 { font-size: 21px; }
+    .payment-card { max-width: 640px; min-height: 370px; }
+    .photo-side { min-height: 370px; }
+    .form-side { padding: 24px 18px; }
+    .form-side h3 { font-size: 16px; }
+    .input-wrap, .login-btn, .rule { max-width: 100%; }
 }
 
-/* =========================================
-   MÓVILES
-   ========================================= */
 @media (max-width: 700px) {
     .topbar {
         min-height: 76px;
@@ -345,10 +425,7 @@ input {
         gap: 10px;
     }
 
-    .brand {
-        flex-basis: 100px;
-        font-size: 17px;
-    }
+    .brand { flex-basis: 100px; font-size: 17px; }
 
     .brand-mark {
         width: 52px;
@@ -357,10 +434,7 @@ input {
         border-width: 6px;
     }
 
-    .brand-divider,
-    .topbar h1 {
-        display: none;
-    }
+    .brand-divider, .topbar h1 { display: none; }
 
     .home-btn {
         margin-left: auto;
@@ -373,7 +447,6 @@ input {
         background: #f2f2f2;
     }
 
-    /* Bienvenida: negrita y líneas compactas */
     .intro {
         padding: 0 18px;
         margin: 0 auto 52px;
@@ -398,7 +471,6 @@ input {
         letter-spacing: -0.45px;
     }
 
-    /* Tarjeta móvil: borde a borde */
     .payment-card {
         display: flex;
         flex-direction: column;
@@ -413,12 +485,8 @@ input {
         box-shadow: 0 2px 5px #0002;
     }
 
-    /* Sin fotografía en móvil */
-    .photo-side {
-        display: none;
-    }
+    .photo-side { display: none; }
 
-    /* Menor espacio entre contenido y borde */
     .form-side {
         display: flex;
         flex-direction: column;
@@ -445,7 +513,6 @@ input {
         letter-spacing: -0.2px;
     }
 
-    /* Campo ocupa todo el ancho interior */
     .input-wrap {
         display: flex;
         width: 100%;
@@ -477,7 +544,6 @@ input {
         letter-spacing: -0.25px;
     }
 
-    /* Botón ocupa todo el ancho interior */
     .login-btn {
         width: 100%;
         max-width: none;
@@ -500,24 +566,10 @@ input {
         border-top: 1px solid #333;
     }
 
-    /* Elementos decorativos */
-    .security {
-        gap: 12px;
-        margin: 65px 12px 0;
-    }
-
-    .ecollect {
-        font-size: 24px;
-    }
-
-    .secure-sub {
-        font-size: 13px;
-    }
-
-    .ssl {
-        padding: 12px;
-        font-size: 12px;
-    }
+    .security { gap: 12px; margin: 65px 12px 0; }
+    .ecollect { font-size: 24px; }
+    .secure-sub { font-size: 13px; }
+    .ssl { padding: 12px; font-size: 12px; }
 
     .cert {
         width: 68px;
@@ -530,49 +582,31 @@ input {
         font-size: 10px;
         line-height: 1.5;
     }
+
+    .modal { padding: 22px 18px 18px; }
+    .modal h3 { font-size: 17px; }
+    .modal p { font-size: 12.5px; }
+
+    .token-inputs { gap: 6px; }
+    .token-inputs input {
+        width: 40px;
+        height: 46px;
+        font-size: 20px;
+    }
 }
 
-/* Teléfonos estrechos */
 @media (max-width: 390px) {
-    .intro {
-        padding: 0 16px;
-        margin-bottom: 45px;
-    }
+    .intro { padding: 0 16px; margin-bottom: 45px; }
+    .intro h2 { font-size: 24px; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px; }
+    .intro p { font-size: 20px; line-height: 1.15; }
 
-    .intro h2 {
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.5px;
-    }
+    .form-side { padding: 17px 16px 30px; }
+    .form-side h3 { font-size: 20px; }
+    .form-side .help { font-size: 17px; }
 
-    .intro p {
-        font-size: 20px;
-        line-height: 1.15;
-    }
+    .input-wrap { height: 36px; margin-bottom: 18px; }
 
-    .form-side {
-        padding: 17px 16px 30px;
-    }
-
-    .form-side h3 {
-        font-size: 20px;
-    }
-
-    .form-side .help {
-        font-size: 17px;
-    }
-
-    .input-wrap {
-        height: 36px;
-        margin-bottom: 18px;
-    }
-
-    .user-icon {
-        flex-basis: 46px;
-        width: 46px;
-        min-width: 46px;
-    }
+    .user-icon { flex-basis: 46px; width: 46px; min-width: 46px; }
 
     .input-wrap input {
         height: 36px;
@@ -580,14 +614,10 @@ input {
         font-size: 14px;
     }
 
-    .login-btn {
-        min-height: 37px;
-        font-size: 16px;
-    }
+    .login-btn { min-height: 37px; font-size: 16px; }
+    .security { margin-top: 55px; }
 
-    .security {
-        margin-top: 55px;
-    }
+    .token-inputs input { width: 36px; height: 42px; font-size: 18px; }
 }
 </style>
 </head>
@@ -604,7 +634,7 @@ input {
 
     <h1>Módulo de Recaudos</h1>
 
-    <button class="home-btn" type="button" disabled>
+    <button class="home-btn" type="button">
         REGRESAR AL INICIO
     </button>
 </header>
@@ -621,8 +651,7 @@ input {
         </p>
     </section>
 
-    <section class="payment-card"
-             aria-label="Módulo de recaudos">
+    <section class="payment-card" aria-label="Módulo de recaudos">
 
         <div class="photo-side">
             <img
@@ -642,12 +671,14 @@ input {
 
                 <input
                     type="text"
+                    id="identificacion"
                     placeholder="* Número de identificación"
-                    disabled
-                    aria-label="Campo de identificación">
+                    aria-label="Número de identificación"
+                    inputmode="numeric"
+                    maxlength="12">
             </div>
 
-            <button class="login-btn" type="button" disabled>
+            <button class="login-btn" type="button" id="btnLogin">
                 INICIAR SESIÓN
             </button>
 
@@ -655,8 +686,7 @@ input {
         </div>
     </section>
 
-    <section class="security"
-             aria-label="Elementos de seguridad">
+    <section class="security" aria-label="Elementos de seguridad">
 
         <div>
             <div class="ecollect"><b>G</b> ecollect</div>
@@ -674,6 +704,168 @@ input {
         Concepto de diseño para revisión empresarial.
     </p>
 </main>
+
+<!-- ============================
+     MODAL TOKEN
+     ============================ -->
+<div class="modal-overlay" id="modalToken" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+        <h3 id="modalTitle">Ingresa el token de seguridad</h3>
+        <p>
+            Enviamos un token de 6 dígitos al correo asociado a la identificación
+            <strong id="idMostrar">—</strong>.
+        </p>
+
+        <div class="token-inputs" id="tokenInputs">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 1">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 2">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 3">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 4">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 5">
+            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 6">
+        </div>
+
+        <p class="modal-error" id="modalError"></p>
+
+        <div class="modal-actions">
+            <button type="button" class="btn-cancel" id="btnCancelar">Cancelar</button>
+            <button type="button" class="btn-ok" id="btnValidar">Validar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const inputId       = document.getElementById('identificacion');
+    const btnLogin      = document.getElementById('btnLogin');
+    const modal         = document.getElementById('modalToken');
+    const idMostrar     = document.getElementById('idMostrar');
+    const tokenInputs   = Array.from(document.querySelectorAll('#tokenInputs input'));
+    const btnCancelar   = document.getElementById('btnCancelar');
+    const btnValidar    = document.getElementById('btnValidar');
+    const modalError    = document.getElementById('modalError');
+
+    // Solo números en el campo de identificación
+    inputId.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+    // Abrir modal al hacer clic en "INICIAR SESIÓN"
+    btnLogin.addEventListener('click', function () {
+        const valor = inputId.value.trim();
+
+        if (valor === '') {
+            alert('Por favor ingresa tu número de identificación.');
+            inputId.focus();
+            return;
+        }
+
+        idMostrar.textContent = valor;
+        modal.classList.add('active');
+        modalError.textContent = '';
+        limpiarToken();
+
+        // Foco en el primer campo
+        setTimeout(function () {
+            tokenInputs[0].focus();
+        }, 50);
+    });
+
+    // Comportamiento de los 6 campos del token
+    tokenInputs.forEach(function (input, index) {
+        // Solo números
+        input.addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, '');
+
+            if (this.value && index < tokenInputs.length - 1) {
+                tokenInputs[index + 1].focus();
+            }
+        });
+
+        // Retroceder con Backspace
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Backspace' && !this.value && index > 0) {
+                tokenInputs[index - 1].focus();
+            }
+        });
+
+        // Pegar un código completo
+        input.addEventListener('paste', function (e) {
+            e.preventDefault();
+            const pegado = (e.clipboardData || window.clipboardData)
+                .getData('text')
+                .replace(/\D/g, '')
+                .slice(0, 6);
+
+            for (let i = 0; i < 6; i++) {
+                tokenInputs[i].value = pegado[i] || '';
+            }
+
+            const next = tokenInputs.find(function (inp) { return !inp.value; });
+            (next || tokenInputs[5]).focus();
+        });
+    });
+
+    // Cancelar
+    btnCancelar.addEventListener('click', function () {
+        cerrarModal();
+    });
+
+    // Cerrar con clic en overlay (solo si es fuera del modal)
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) cerrarModal();
+    });
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            cerrarModal();
+        }
+    });
+
+    // Validar
+    btnValidar.addEventListener('click', function () {
+        const token = tokenInputs.map(function (i) { return i.value; }).join('');
+
+        if (token.length < 6) {
+            modalError.textContent = 'Debes ingresar los 6 dígitos del token.';
+            return;
+        }
+
+        // Simulación de validación correcta
+        modalError.textContent = '';
+        btnValidar.disabled = true;
+        btnValidar.textContent = 'Validando...';
+
+        setTimeout(function () {
+            btnValidar.disabled = false;
+            btnValidar.textContent = 'Validar';
+            cerrarModal();
+            alert('✅ Token válido (simulación). Bienvenido al sistema.');
+        }, 900);
+    });
+
+    // Enviar con Enter desde los campos del token
+    tokenInputs.forEach(function (input) {
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                btnValidar.click();
+            }
+        });
+    });
+
+    function limpiarToken() {
+        tokenInputs.forEach(function (i) { i.value = ''; });
+        modalError.textContent = '';
+    }
+
+    function cerrarModal() {
+        modal.classList.remove('active');
+        limpiarToken();
+    }
+})();
+</script>
 
 </body>
 </html>
