@@ -4,17 +4,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Prototipo visual | Módulo de Recaudos</title>
 
 <style>
 :root {
     --amarillo: #ffdf00;
-    --texto: #253449;
+    --texto: #29313b;
     --fondo: #f2f2f2;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
 }
 
 body {
@@ -26,60 +31,61 @@ body {
 
 /* Aviso del prototipo */
 .demo-banner {
+    padding: 8px 12px;
     background: #fff4c2;
+    border-bottom: 1px solid #eadb82;
     color: #4b4100;
     text-align: center;
-    padding: 8px 12px;
     font-size: 11px;
-    font-weight: bold;
-    border-bottom: 1px solid #eadb82;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 /* Encabezado */
 .topbar {
     min-height: 90px;
-    background: #fff;
     display: flex;
     align-items: center;
     gap: 25px;
     padding: 10px clamp(20px, 5vw, 80px);
+    background: #fff;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .brand {
-    width: 105px;
-    flex-shrink: 0;
+    flex: 0 0 105px;
     text-align: center;
     color: #111;
-    font-weight: bold;
     font-size: 16px;
+    font-weight: 700;
 }
 
 .brand-mark {
     width: 50px;
     height: 43px;
-    border: 6px solid var(--amarillo);
     margin: 0 auto 4px;
+    border: 6px solid var(--amarillo);
 }
 
 .brand-divider {
-    height: 52px;
     width: 1px;
+    height: 52px;
     background: #555;
 }
 
 .topbar h1 {
     flex: 1;
     margin: 0;
-    font-size: 25px;
     color: #202a39;
+    font-size: 25px;
+    font-weight: 700;
 }
 
 .home-btn {
     padding: 9px 15px;
     border: 1px solid #394150;
     border-radius: 5px;
-    background: white;
+    background: #fff;
     color: #1d2c40;
     font-size: 11px;
     white-space: nowrap;
@@ -89,7 +95,7 @@ body {
 main {
     min-height: calc(100vh - 120px);
     padding: 30px 20px 40px;
-    background: radial-gradient(#fff, #f1f1f1);
+    background: radial-gradient(ellipse at center, #fff 0%, #f2f2f2 100%);
 }
 
 .intro {
@@ -100,25 +106,27 @@ main {
 
 .intro h2 {
     margin: 0 0 10px;
+    color: #29313b;
     font-size: clamp(18px, 1.8vw, 25px);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.3;
 }
 
 .intro p {
     margin: 0;
+    color: #29313b;
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.4;
 }
 
-/* Tarjeta principal */
+/* Tarjeta */
 .payment-card {
     display: grid;
     grid-template-columns: 46% 54%;
     width: 100%;
     max-width: 716px;
-    min-height: 465px;
+    min-height: 390px;
     margin: 0 auto;
     overflow: hidden;
     background: #fff;
@@ -127,50 +135,53 @@ main {
     box-shadow: 0 2px 5px #0002;
 }
 
-/* Imagen: llena la columna izquierda en PC */
+/* Imagen de PC */
 .photo-side {
     position: relative;
+    align-self: stretch;
     min-width: 0;
-    min-height: 465px;
+    min-height: 390px;
     overflow: hidden;
     background: #fff;
 }
 
 .photo-side img {
-    display: block;
     position: absolute;
-    inset: 0;
+    display: block;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
 }
 
 /* Formulario */
 .form-side {
     min-width: 0;
-    padding: 30px 28px 22px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 30px 28px 22px;
 }
 
 .form-side h3 {
     margin: 0 0 12px;
-    font-size: 19px;
-    line-height: 1.25;
     color: #29313b;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .form-side .help {
     margin: 0 0 14px;
+    color: #929292;
     font-size: 14px;
-    line-height: 1.4;
     font-weight: 600;
-    color: #969696;
+    line-height: 1.4;
 }
 
-/* Input compacto en PC */
+/* Campo de ejemplo */
 .input-wrap {
     display: flex;
     width: 100%;
@@ -181,19 +192,19 @@ main {
 
 .user-icon {
     display: flex;
+    flex: 0 0 40px;
     align-items: center;
     justify-content: center;
-    flex: 0 0 40px;
+    border-radius: 4px 0 0 4px;
     background: #222;
     color: #fff;
-    border-radius: 4px 0 0 4px;
     font-size: 15px;
 }
 
 .input-wrap input {
-    min-width: 0;
-    width: 100%;
     flex: 1;
+    width: 100%;
+    min-width: 0;
     height: 38px;
     padding: 7px 9px;
     border: 1px solid #ccc;
@@ -201,9 +212,16 @@ main {
     border-radius: 0 4px 4px 0;
     background: #fafafa;
     color: #777;
+    font-family: inherit;
     font-size: 12px;
 }
 
+.input-wrap input::placeholder {
+    color: #777;
+    opacity: 1;
+}
+
+/* Botón de muestra */
 .login-btn {
     width: 100%;
     max-width: 300px;
@@ -213,31 +231,33 @@ main {
     border-radius: 4px;
     background: #fff;
     color: #29313b;
+    font-family: inherit;
     font-size: 13px;
+    font-weight: 400;
 }
 
 .rule {
     width: 100%;
     max-width: 300px;
+    margin: 16px 0 0;
     border: 0;
     border-top: 1px solid #777;
-    margin: 16px 0 0;
 }
 
 /* Elementos decorativos */
 .security {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 25px;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 25px;
     margin: 28px auto 0;
 }
 
 .ecollect {
     color: #1c2636;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: -1px;
 }
 
@@ -247,38 +267,38 @@ main {
 
 .secure-sub {
     margin-top: 2px;
-    font-size: 11px;
     color: #68ae72;
+    font-size: 11px;
 }
 
 .ssl {
     padding: 11px 17px;
-    background: #7850c6;
     border-radius: 25px;
+    background: #7850c6;
     color: #fff;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .cert {
+    display: flex;
     width: 68px;
     height: 68px;
-    border: 3px dotted #333;
-    border-radius: 50%;
-    display: flex;
     align-items: center;
     justify-content: center;
+    border: 3px dotted #333;
+    border-radius: 50%;
     text-align: center;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.2;
 }
 
 .notice {
     max-width: 716px;
     margin: 18px auto 0;
-    text-align: center;
     color: #666;
+    text-align: center;
     font-size: 11px;
     line-height: 1.5;
 }
@@ -289,20 +309,20 @@ main {
     z-index: 5;
     top: 48%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-24deg);
     width: max-content;
     max-width: 95%;
+    transform: translate(-50%, -50%) rotate(-24deg);
     color: #666;
     opacity: .13;
     font-size: clamp(20px, 3.5vw, 43px);
     font-weight: 900;
     letter-spacing: .04em;
     text-align: center;
-    pointer-events: none;
     white-space: nowrap;
+    pointer-events: none;
 }
 
-/* Controles desactivados: prototipo visual */
+/* Controles desactivados en esta maqueta */
 button,
 input {
     cursor: not-allowed;
@@ -312,8 +332,8 @@ input {
 @media (min-width: 701px) and (max-width: 950px) {
     .topbar {
         gap: 16px;
-        padding-left: 22px;
         padding-right: 22px;
+        padding-left: 22px;
     }
 
     .topbar h1 {
@@ -322,11 +342,11 @@ input {
 
     .payment-card {
         max-width: 660px;
-        min-height: 420px;
+        min-height: 390px;
     }
 
     .photo-side {
-        min-height: 420px;
+        min-height: 390px;
     }
 
     .form-side {
@@ -347,152 +367,259 @@ input {
 /* Móviles */
 @media (max-width: 700px) {
     .demo-banner {
+        padding: 7px 5px;
         font-size: 9px;
-        padding: 8px 6px;
     }
 
     .topbar {
-        min-height: 72px;
+        min-height: 76px;
         padding: 9px 14px;
         gap: 12px;
     }
 
     .brand {
-        width: 82px;
-        font-size: 13px;
+        flex-basis: 100px;
+        font-size: 17px;
     }
 
     .brand-mark {
-        width: 42px;
-        height: 37px;
-        border-width: 5px;
+        width: 52px;
+        height: 43px;
+        margin-bottom: 3px;
+        border-width: 6px;
     }
 
-    .brand-divider {
-        height: 42px;
-    }
-
+    .brand-divider,
     .topbar h1 {
         display: none;
     }
 
     .home-btn {
         margin-left: auto;
-        padding: 9px 10px;
-        font-size: 10px;
+        padding: 10px 12px;
+        font-size: 11px;
     }
 
     main {
-        padding: 25px 16px 30px;
+        padding: 28px 0 35px;
+        background: #f2f2f2;
     }
 
+    /* Bienvenida: texto normal, no negrita */
     .intro {
-        margin-bottom: 25px;
+        padding: 0 20px;
+        margin: 0 auto 75px;
+        text-align: center;
     }
 
     .intro h2 {
-        font-size: 19px;
-        line-height: 1.3;
-        margin-bottom: 12px;
+        margin: 0 0 22px;
+        color: #333;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: -.45px;
     }
 
     .intro p {
-        font-size: 14px;
-        line-height: 1.4;
+        margin: 0;
+        color: #333;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.35;
     }
 
+    /* Tarjeta de ancho completo */
     .payment-card {
         display: flex;
         flex-direction: column;
         width: 100%;
+        max-width: none;
         min-height: 0;
-        border-radius: 7px;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #dedede;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 5px #0002;
     }
 
-    /* La imagen no aparece en móvil */
+    /* La imagen solo se muestra en PC */
     .photo-side {
         display: none;
     }
 
     .form-side {
-        width: 100%;
-        padding: 24px 20px 22px;
+        display: flex;
+        flex-direction: column;
         align-items: stretch;
+        width: 100%;
+        padding: 34px 34px 62px;
     }
 
+    /* Título del formulario */
     .form-side h3 {
-        font-size: 18px;
-        line-height: 1.3;
-        margin-bottom: 10px;
-    }
-
-    .form-side .help {
-        font-size: 13px;
+        margin: 0 0 20px;
+        color: #333;
+        font-size: 27px;
         font-weight: 400;
-        margin-bottom: 16px;
+        line-height: 1.3;
+        letter-spacing: -.3px;
     }
 
-    /* Input al 100% del ancho disponible */
+    /* Texto auxiliar gris */
+    .form-side .help {
+        margin: 0 0 22px;
+        color: #929292;
+        font-size: 23px;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    /* Input al 100% del espacio interior */
     .input-wrap {
+        display: flex;
         width: 100%;
         max-width: none;
-        height: 40px;
-        margin-bottom: 15px;
+        height: 69px;
+        margin: 0 0 35px;
     }
 
     .user-icon {
-        flex-basis: 40px;
+        flex: 0 0 55px;
+        width: 55px;
+        min-width: 55px;
+        border-radius: 7px 0 0 7px;
+        font-size: 23px;
     }
 
     .input-wrap input {
+        flex: 1;
         width: 100%;
         min-width: 0;
-        height: 40px;
-        font-size: 13px;
+        height: 69px;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-left: 0;
+        border-radius: 0 7px 7px 0;
+        background: #fff;
+        font-size: 19px;
+        font-weight: 400;
     }
 
-    /* Botón al 100% del ancho disponible */
+    /* Botón al 100% del espacio interior */
     .login-btn {
         width: 100%;
         max-width: none;
-        min-height: 40px;
-        font-size: 13px;
+        min-height: 72px;
+        padding: 12px;
+        border: 1.5px solid #333;
+        border-radius: 8px;
+        background: #fff;
+        color: #333;
+        font-size: 23px;
+        font-weight: 400;
     }
 
     .rule {
         width: 100%;
         max-width: none;
-        margin-top: 20px;
+        margin: 28px 0 0;
+        border-top: 2px solid #444;
     }
 
+    /* Elementos de la parte inferior */
     .security {
-        gap: 15px;
-        margin-top: 30px;
+        gap: 13px;
+        margin: 90px 15px 0;
     }
 
     .ecollect {
-        font-size: 22px;
+        font-size: 24px;
+    }
+
+    .secure-sub {
+        font-size: 13px;
     }
 
     .ssl {
-        padding: 10px 12px;
-        font-size: 11px;
+        padding: 12px;
+        font-size: 12px;
     }
 
     .cert {
-        width: 62px;
-        height: 62px;
+        width: 68px;
+        height: 68px;
+        font-size: 10px;
     }
 
     .notice {
-        margin-top: 17px;
-        font-size: 10px;
+        margin: 25px 20px 0;
+        font-size: 11px;
+        line-height: 1.5;
     }
 
     .watermark {
         width: 95%;
+        max-width: 95%;
         white-space: normal;
+        font-size: 20px;
+        line-height: 1.4;
+    }
+}
+
+/* Teléfonos estrechos */
+@media (max-width: 390px) {
+    .intro {
+        padding: 0 16px;
+        margin-bottom: 60px;
+    }
+
+    .intro h2 {
+        font-size: 24px;
+    }
+
+    .intro p {
+        font-size: 21px;
+    }
+
+    .form-side {
+        padding: 27px 20px 45px;
+    }
+
+    .form-side h3 {
+        font-size: 23px;
+    }
+
+    .form-side .help {
+        font-size: 19px;
+    }
+
+    .input-wrap {
+        height: 54px;
+        margin-bottom: 25px;
+    }
+
+    .user-icon {
+        flex-basis: 48px;
+        width: 48px;
+        min-width: 48px;
+        font-size: 21px;
+    }
+
+    .input-wrap input {
+        height: 54px;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .login-btn {
+        min-height: 56px;
         font-size: 18px;
+    }
+
+    .security {
+        margin-top: 70px;
     }
 }
 </style>
@@ -505,8 +632,7 @@ input {
 </div>
 
 <header class="topbar">
-
-    <div class="brand" aria-label="Marca de referencia">
+    <div class="brand" aria-label="Marca ilustrativa">
         <div class="brand-mark"></div>
         AMARILO
     </div>
@@ -518,11 +644,9 @@ input {
     <button class="home-btn" type="button" disabled>
         REGRESAR AL INICIO
     </button>
-
 </header>
 
 <main>
-
     <section class="intro">
         <h2>
             Bienvenido al sistema de pagos electrónicos de AMARILO -
@@ -540,12 +664,10 @@ input {
         <div class="photo-side">
             <img
                 src="https://styles.ecollect.co/eCollectPlus/10189/eCollect_brand/img/box_login.png"
-                alt="Imagen ilustrativa del módulo de recaudos"
-            >
+                alt="Imagen ilustrativa del módulo de recaudos">
         </div>
 
         <div class="form-side">
-
             <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
 
             <p class="help">
@@ -559,8 +681,7 @@ input {
                     type="text"
                     placeholder="* Número de identificación"
                     disabled
-                    aria-label="Campo de ejemplo desactivado"
-                >
+                    aria-label="Campo de ejemplo desactivado">
             </div>
 
             <button class="login-btn" type="button" disabled>
@@ -568,35 +689,27 @@ input {
             </button>
 
             <hr class="rule">
-
         </div>
     </section>
 
     <section class="security"
-             aria-label="Elementos decorativos del prototipo">
-
+             aria-label="Elementos ilustrativos del prototipo">
         <div>
             <div class="ecollect"><b>G</b> ecollect</div>
             <div class="secure-sub">Seguro para ti ◈</div>
         </div>
 
-        <div class="ssl">
-            SSL · DEMO
-        </div>
+        <div class="ssl">SSL · DEMO</div>
 
         <div class="cert">
-            ICONO<br>
-            DEMO<br>
-            SEGURIDAD
+            ICONO<br>DEMO<br>SEGURIDAD
         </div>
-
     </section>
 
     <p class="notice">
         Concepto de diseño para revisión empresarial. Esta maqueta es estática:
         no autentica usuarios, no procesa transacciones y no guarda ni envía información.
     </p>
-
 </main>
 
 <div class="watermark" aria-hidden="true">
