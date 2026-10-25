@@ -105,7 +105,7 @@ main {
     line-height: 1.4;
 }
 
-/* Tarjeta central para PC */
+/* Tarjeta central */
 .payment-card {
     display: grid;
     grid-template-columns: 46% 54%;
@@ -159,12 +159,13 @@ main {
 
 .form-side .help {
     margin: 0 0 14px;
-    color: #929292;
+    color: #555;
     font-size: 13px;
     font-weight: 600;
     line-height: 1.4;
 }
 
+/* Campo de identificación */
 .input-wrap {
     display: flex;
     width: 100%;
@@ -194,7 +195,7 @@ main {
     border-left: 0;
     border-radius: 0 4px 4px 0;
     background: #fafafa;
-    color: #777;
+    color: #29313b;
     font-family: inherit;
     font-size: 12px;
 }
@@ -204,6 +205,7 @@ main {
     opacity: 1;
 }
 
+/* Botón */
 .login-btn {
     width: 100%;
     max-width: 300px;
@@ -217,6 +219,11 @@ main {
     font-size: 13px;
     font-weight: 400;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.login-btn:hover {
+    background: #f2f2f2;
 }
 
 .rule {
@@ -225,6 +232,70 @@ main {
     margin: 16px 0 0;
     border: 0;
     border-top: 1px solid #777;
+}
+
+/* VISTA 2: TOKEN */
+.token-view {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+}
+
+.token-view.active {
+    display: flex;
+}
+
+/* Caja del token */
+.token-input-box {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    height: 40px;
+    margin: 0 0 18px;
+    border: 1px solid #a0b2c6;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.token-input-box:focus-within {
+    border-color: #29313b;
+}
+
+.token-input-box .lock-icon {
+    display: flex;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+}
+
+.token-input-box input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    padding: 0 10px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: inherit;
+    color: #29313b;
+    outline: none;
+    background: transparent;
+}
+
+.token-input-box .toggle-eye {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    color: #29313b;
+    font-size: 16px;
 }
 
 /* Elementos decorativos inferiores */
@@ -285,127 +356,6 @@ main {
 }
 
 /* ============================
-   MODAL TOKEN
-   ============================ */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, .45);
-    z-index: 100;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal {
-    width: 100%;
-    max-width: 420px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-    padding: 26px 24px 22px;
-    text-align: center;
-    animation: modalIn .2s ease-out;
-}
-
-@keyframes modalIn {
-    from { opacity: 0; transform: translateY(12px) scale(.97); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.modal h3 {
-    margin: 0 0 8px;
-    font-size: 18px;
-    color: #29313b;
-    font-weight: 700;
-}
-
-.modal p {
-    margin: 0 0 20px;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.45;
-}
-
-.modal p strong {
-    color: #29313b;
-}
-
-/* 6 campos del token */
-.token-inputs {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 22px;
-}
-
-.token-inputs input {
-    width: 42px;
-    height: 50px;
-    padding: 0;
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
-    background: #fafafa;
-    font-size: 22px;
-    font-weight: 700;
-    color: #29313b;
-    text-align: center;
-    font-family: inherit;
-    outline: none;
-    transition: border-color .15s, box-shadow .15s;
-}
-
-.token-inputs input:focus {
-    border-color: #394150;
-    box-shadow: 0 0 0 3px rgba(57, 65, 80, .12);
-    background: #fff;
-}
-
-.modal-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.modal-actions button {
-    flex: 1;
-    min-height: 40px;
-    padding: 8px;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    border: 1px solid #394150;
-}
-
-.btn-cancel {
-    background: #fff;
-    color: #29313b;
-}
-
-.btn-ok {
-    background: #29313b;
-    color: #fff;
-    border-color: #29313b;
-}
-
-.btn-ok:hover { background: #1c2636; }
-.btn-cancel:hover { background: #f2f2f2; }
-
-.modal-error {
-    min-height: 16px;
-    margin: 0 0 12px;
-    color: #c0392b;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* ============================
    RESPONSIVE
    ============================ */
 @media (min-width: 701px) and (max-width: 950px) {
@@ -415,7 +365,7 @@ main {
     .photo-side { min-height: 370px; }
     .form-side { padding: 24px 18px; }
     .form-side h3 { font-size: 16px; }
-    .input-wrap, .login-btn, .rule { max-width: 100%; }
+    .input-wrap, .login-btn, .rule, .token-input-box { max-width: 100%; }
 }
 
 @media (max-width: 700px) {
@@ -558,6 +508,22 @@ main {
         letter-spacing: -0.25px;
     }
 
+    .token-input-box {
+        width: 100%;
+        max-width: none;
+        height: 44px;
+        margin-bottom: 18px;
+    }
+
+    .token-input-box .lock-icon {
+        flex-basis: 50px;
+        font-size: 16px;
+    }
+
+    .token-input-box input {
+        font-size: 18px;
+    }
+
     .rule {
         width: 100%;
         max-width: none;
@@ -582,17 +548,6 @@ main {
         font-size: 10px;
         line-height: 1.5;
     }
-
-    .modal { padding: 22px 18px 18px; }
-    .modal h3 { font-size: 17px; }
-    .modal p { font-size: 12.5px; }
-
-    .token-inputs { gap: 6px; }
-    .token-inputs input {
-        width: 40px;
-        height: 46px;
-        font-size: 20px;
-    }
 }
 
 @media (max-width: 390px) {
@@ -616,8 +571,6 @@ main {
 
     .login-btn { min-height: 37px; font-size: 16px; }
     .security { margin-top: 55px; }
-
-    .token-inputs input { width: 36px; height: 42px; font-size: 18px; }
 }
 </style>
 </head>
@@ -634,7 +587,7 @@ main {
 
     <h1>Módulo de Recaudos</h1>
 
-    <button class="home-btn" type="button">
+    <button class="home-btn" type="button" onclick="location.reload()">
         REGRESAR AL INICIO
     </button>
 </header>
@@ -660,29 +613,65 @@ main {
         </div>
 
         <div class="form-side">
-            <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
+            
+            <!-- VISTA 1: IDENTIFICACIÓN -->
+            <div id="viewIdentificacion" style="width: 100%;">
+                <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
 
-            <p class="help">
-                Digite la información solicitada para ingresar al sistema.
-            </p>
+                <p class="help">
+                    Digite la información solicitada para ingresar al sistema.
+                </p>
 
-            <div class="input-wrap">
-                <span class="user-icon" aria-hidden="true">♟</span>
+                <div class="input-wrap">
+                    <span class="user-icon" aria-hidden="true">♟</span>
 
-                <input
-                    type="text"
-                    id="identificacion"
-                    placeholder="* Número de identificación"
-                    aria-label="Número de identificación"
-                    inputmode="numeric"
-                    maxlength="12">
+                    <input
+                        type="text"
+                        id="identificacion"
+                        placeholder="* Número de identificación"
+                        aria-label="Número de identificación"
+                        inputmode="numeric"
+                        maxlength="12">
+                </div>
+
+                <button class="login-btn" type="button" id="btnLogin">
+                    INICIAR SESIÓN
+                </button>
+
+                <hr class="rule">
             </div>
 
-            <button class="login-btn" type="button" id="btnLogin">
-                INICIAR SESIÓN
-            </button>
+            <!-- VISTA 2: TOKEN -->
+            <div id="viewToken" class="token-view">
+                <h3>PAGO DE LA CUOTA DE SU VIVIENDA</h3>
 
-            <hr class="rule">
+                <p class="help">
+                    Por favor ingrese el Token enviado a su correo electrónico:
+                </p>
+
+                <div class="token-input-box">
+                    <span class="lock-icon" aria-hidden="true">🔒</span>
+
+                    <input
+                        type="password"
+                        id="inputToken"
+                        aria-label="Token de seguridad"
+                        inputmode="numeric"
+                        maxlength="6"
+                        placeholder="......">
+
+                    <button type="button" class="toggle-eye" id="btnToggleEye" aria-label="Mostrar u ocultar token">
+                        👁️
+                    </button>
+                </div>
+
+                <button class="login-btn" type="button" id="btnValidarToken">
+                    VALIDAR TOKEN
+                </button>
+
+                <hr class="rule">
+            </div>
+
         </div>
     </section>
 
@@ -705,165 +694,89 @@ main {
     </p>
 </main>
 
-<!-- ============================
-     MODAL TOKEN
-     ============================ -->
-<div class="modal-overlay" id="modalToken" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-        <h3 id="modalTitle">Ingresa el token de seguridad</h3>
-        <p>
-            Enviamos un token de 6 dígitos al correo asociado a la identificación
-            <strong id="idMostrar">—</strong>.
-        </p>
-
-        <div class="token-inputs" id="tokenInputs">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 1">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 2">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 3">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 4">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 5">
-            <input type="text" inputmode="numeric" maxlength="1" aria-label="Dígito 6">
-        </div>
-
-        <p class="modal-error" id="modalError"></p>
-
-        <div class="modal-actions">
-            <button type="button" class="btn-cancel" id="btnCancelar">Cancelar</button>
-            <button type="button" class="btn-ok" id="btnValidar">Validar</button>
-        </div>
-    </div>
-</div>
-
 <script>
 (function () {
-    const inputId       = document.getElementById('identificacion');
-    const btnLogin      = document.getElementById('btnLogin');
-    const modal         = document.getElementById('modalToken');
-    const idMostrar     = document.getElementById('idMostrar');
-    const tokenInputs   = Array.from(document.querySelectorAll('#tokenInputs input'));
-    const btnCancelar   = document.getElementById('btnCancelar');
-    const btnValidar    = document.getElementById('btnValidar');
-    const modalError    = document.getElementById('modalError');
+    // Elementos de la vista 1
+    const inputId = document.getElementById('identificacion');
+    const btnLogin = document.getElementById('btnLogin');
+    const viewIdentificacion = document.getElementById('viewIdentificacion');
 
-    // Solo números en el campo de identificación
+    // Elementos de la vista 2 (Token)
+    const viewToken = document.getElementById('viewToken');
+    const inputToken = document.getElementById('inputToken');
+    const btnToggleEye = document.getElementById('btnToggleEye');
+    const btnValidarToken = document.getElementById('btnValidarToken');
+
+    // Forzar solo números en la identificación
     inputId.addEventListener('input', function () {
         this.value = this.value.replace(/\D/g, '');
     });
 
-    // Abrir modal al hacer clic en "INICIAR SESIÓN"
+    // Acción del botón Iniciar Sesión -> Pasa a la vista del token
     btnLogin.addEventListener('click', function () {
-        const valor = inputId.value.trim();
+        const id = inputId.value.trim();
 
-        if (valor === '') {
+        if (id === '') {
             alert('Por favor ingresa tu número de identificación.');
             inputId.focus();
             return;
         }
 
-        idMostrar.textContent = valor;
-        modal.classList.add('active');
-        modalError.textContent = '';
-        limpiarToken();
+        // Cambiar vista
+        viewIdentificacion.style.display = 'none';
+        viewToken.classList.add('active');
 
-        // Foco en el primer campo
-        setTimeout(function () {
-            tokenInputs[0].focus();
-        }, 50);
+        // Enfocar el campo del token automáticamente
+        setTimeout(() => {
+            inputToken.focus();
+        }, 100);
     });
 
-    // Comportamiento de los 6 campos del token
-    tokenInputs.forEach(function (input, index) {
-        // Solo números
-        input.addEventListener('input', function () {
-            this.value = this.value.replace(/\D/g, '');
-
-            if (this.value && index < tokenInputs.length - 1) {
-                tokenInputs[index + 1].focus();
-            }
-        });
-
-        // Retroceder con Backspace
-        input.addEventListener('keydown', function (e) {
-            if (e.key === 'Backspace' && !this.value && index > 0) {
-                tokenInputs[index - 1].focus();
-            }
-        });
-
-        // Pegar un código completo
-        input.addEventListener('paste', function (e) {
-            e.preventDefault();
-            const pegado = (e.clipboardData || window.clipboardData)
-                .getData('text')
-                .replace(/\D/g, '')
-                .slice(0, 6);
-
-            for (let i = 0; i < 6; i++) {
-                tokenInputs[i].value = pegado[i] || '';
-            }
-
-            const next = tokenInputs.find(function (inp) { return !inp.value; });
-            (next || tokenInputs[5]).focus();
-        });
+    // Forzar solo números en el token
+    inputToken.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '');
     });
 
-    // Cancelar
-    btnCancelar.addEventListener('click', function () {
-        cerrarModal();
-    });
-
-    // Cerrar con clic en overlay (solo si es fuera del modal)
-    modal.addEventListener('click', function (e) {
-        if (e.target === modal) cerrarModal();
-    });
-
-    // Cerrar con ESC
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            cerrarModal();
+    // Mostrar / Ocultar token (el ojito)
+    btnToggleEye.addEventListener('click', function () {
+        if (inputToken.type === 'password') {
+            inputToken.type = 'text';
+            btnToggleEye.style.opacity = '0.5'; // Cambia un poco el icono al estar visible
+        } else {
+            inputToken.type = 'password';
+            btnToggleEye.style.opacity = '1';
         }
+        inputToken.focus();
     });
 
-    // Validar
-    btnValidar.addEventListener('click', function () {
-        const token = tokenInputs.map(function (i) { return i.value; }).join('');
+    // Validar Token
+    btnValidarToken.addEventListener('click', function () {
+        const token = inputToken.value.trim();
 
         if (token.length < 6) {
-            modalError.textContent = 'Debes ingresar los 6 dígitos del token.';
+            alert('El token debe tener exactamente 6 dígitos.');
+            inputToken.focus();
             return;
         }
 
-        // Simulación de validación correcta
-        modalError.textContent = '';
-        btnValidar.disabled = true;
-        btnValidar.textContent = 'Validando...';
+        // Simulación de validación exitosa
+        btnValidarToken.textContent = 'VALIDANDO...';
+        btnValidarToken.disabled = true;
 
-        setTimeout(function () {
-            btnValidar.disabled = false;
-            btnValidar.textContent = 'Validar';
-            cerrarModal();
-            alert('✅ Token válido (simulación). Bienvenido al sistema.');
-        }, 900);
+        setTimeout(() => {
+            btnValidarToken.textContent = 'VALIDAR TOKEN';
+            btnValidarToken.disabled = false;
+            alert('✅ Token válido. Redirigiendo al sistema (simulación).');
+        }, 1000);
     });
 
-    // Enviar con Enter desde los campos del token
-    tokenInputs.forEach(function (input) {
-        input.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                btnValidar.click();
-            }
-        });
+    // Permitir enviar con "Enter" en el campo del token
+    inputToken.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            btnValidarToken.click();
+        }
     });
-
-    function limpiarToken() {
-        tokenInputs.forEach(function (i) { i.value = ''; });
-        modalError.textContent = '';
-    }
-
-    function cerrarModal() {
-        modal.classList.remove('active');
-        limpiarToken();
-    }
 })();
 </script>
 
