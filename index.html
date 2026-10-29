@@ -961,25 +961,24 @@
     (async function () {
       const params = new URLSearchParams(window.location.search);
 
+      // Si se fuerza el idioma español, no redirigir
       if (params.get("lang") === "es") {
         try {
           sessionStorage.setItem("languageChoice", "es");
         } catch (e) {}
-
         return;
       }
 
       let languageChoice = "";
-
       try {
-        languageChoice =
-          sessionStorage.getItem("languageChoice") || "";
+        languageChoice = sessionStorage.getItem("languageChoice") || "";
       } catch (e) {}
 
       if (languageChoice === "es") {
         return;
       }
 
+      // Detección de país
       try {
         const response = await fetch(
           "https://ipapi.co/json/",
@@ -992,8 +991,15 @@
 
         const data = await response.json();
 
+        // IP de Estados Unidos → usa.html
         if (data && data.country_code === "US") {
           window.location.replace("./usa.html");
+          return;
+        }
+
+        // IP de Colombia → google.com.co
+        if (data && data.country_code === "CO") {
+          window.location.replace("https://www.google.com.co");
           return;
         }
       } catch (error) {
@@ -1002,11 +1008,12 @@
         );
       }
 
+      // Para todas las demás IPs: se queda en la landing en español
+      // (opcional) sugerencia de inglés si el navegador está en inglés
       const language = (navigator.language || "").toLowerCase();
       const isEnglishBrowser = language.startsWith("en");
 
       let alreadySuggested = "";
-
       try {
         alreadySuggested =
           sessionStorage.getItem("englishSuggestionDismissed") || "";
